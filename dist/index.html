@@ -1,10 +1,68 @@
 <html lang="en" ng-app="Mahjong">
 	<head>
+		<!-- STYLE -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
 		<!-- The css is copied into dist/css/app.css by the copy task -->
 		<link rel="stylesheet" href="css/app.css"/>
-	</head>
-	<body>
+
+		<!-- Services -->
 		<script src="js/app.js"></script>
-		Kijk
+
+	</head>
+	<body ng-app="Mahjong">
+		
+		<nav class="navbar navbar-fixed-top navbar-default">
+      		<div class="container">
+        		<div class="navbar-header">
+          			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+			            <span class="sr-only">Toggle navigation</span>
+			            <span class="icon-bar"></span>
+			            <span class="icon-bar"></span>
+			            <span class="icon-bar"></span>
+          			</button>
+          			<a class="navbar-brand" href="/">Mahjong</a>
+        		</div>
+        		<div id="navbar" class="collapse navbar-collapse">
+		          	<ul class="nav navbar-nav">
+			            <li><a href="/#/games">Spelen</a></li>
+			            <li ng-if="!isLogedIn()"><a href="http://mahjongmayhem.herokuapp.com/auth/avans?callbackUrl=http://localhost:8080/dist/%23/authcallback">Inloggen</a></li>
+			            <li ng-if="isLogedIn()"><a href="/#/logout">Uitloggen</a></li>
+		          	</ul>
+	        	</div><!-- /.nav-collapse -->
+	      	</div><!-- /.container -->
+	    </nav><!-- /.navbar -->
+
+		<div class="container-fluid" style="margin-top:50px;">
+
+	    	<div id="loadingDiv" ng-show="loading">
+	    		<div id="loadingContainer">
+	    			<div id="loadingImage">
+						<img src="img/loadingFlat.gif" />
+					</div>
+					<h2 id="loadingText">{{loadingText}}</h2>
+				</div>
+			</div>  
+
+	    	<ng-view>
+	    	</ng-view>
+
+	    	<hr>
+
+		    <!-- Site footer -->
+		    <footer class="footer">
+		      	<div class="container">
+		        	<p class="text-muted">Mahjong games by &copy; Mickey</p>
+		      	</div>
+		    </footer>
+
+	    </div> <!-- /container -->
+
+		<!-- Bootstrap core JavaScript
+	    ================================================== -->
+	    <!-- Placed at the end of the document so the pages load faster -->
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	</body>
 </html>
