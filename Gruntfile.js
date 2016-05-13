@@ -29,7 +29,8 @@ module.exports = function(grunt) {
                     sourcemap: 'none'
                 },
                 files: {
-                    'dist/css/app.css': 'app/css/app.scss'
+                    'dist/css/app.css': 'app/css/app.scss',
+                    'dist/css/game-list.css': 'app/css/game-list.scss'
                 }
             }
         },
@@ -45,13 +46,17 @@ module.exports = function(grunt) {
             css: {
                 files: 'app/**/*.css',
                 tasks: 'copy'
+            },
+            scss: {
+                files: 'app/**/*.scss',
+                tasks: 'sass'
             }
         },
         'http-server': {
             dev: {
                 root: './dist',
                 port: 3000,
-                openBrowser: true,
+                openBrowser: false,
                 runInBackground: true
             }
         }

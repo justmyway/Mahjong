@@ -1,0 +1,16 @@
+@import 'settings';
+@import 'mixin';
+
+.column-block{
+	padding: 0 10px;
+	margin: 14px 0;
+}
+
+@for $i from 1 through length($templates){
+	.column-background-#{nth($templates, $i)}{
+		background: image-url("img/#{nth($templates, $i)}.png") no-repeat !important;
+		@include border-radius(4px);
+		border: 8px solid #{nth($border-color-templates, $i)};
+		background-color: #{nth($background-color-templates, $i)};
+	}
+}

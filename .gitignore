@@ -2,3 +2,6 @@
 
 # modules
 node_modules
+
+#cache
+.sass-cache

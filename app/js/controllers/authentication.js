@@ -6,12 +6,11 @@ angular.module('Mahjong.controllers')
 .controller('userLogout', function($location, Settings, $cookies, $http) {
     $cookies.remove('user');
     $cookies.remove('token');
-    console.log('cookie', $cookies);
-    $location.path('/dist/#/');
+    $location.path('/#/');
 })
 
 .controller('userCallback', function($location, $routeParams, $cookies, $http) {
     $cookies.put('user', $routeParams.username);
     $cookies.put('token', $routeParams.token);
-    $location.path('/dist/#/');
+    $location.path('/#/games');
 })

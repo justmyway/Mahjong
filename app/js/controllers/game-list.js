@@ -2,15 +2,15 @@ angular.module('Mahjong.controllers')
     .controller('GameListController', ['$rootScope', '$scope', 'Games', 'Settings',
         function($rootScope, $scope, Games, Settings) {
 
-            $rootScope.loading = false;
+            $rootScope.loading = true;
             $scope.games = null;
             $scope.gameTemplates = Settings.gameTemplates
 
             Games.query({}, function(response) {
-                console.log(response);
+                $rootScope.loading = false;
                 $scope.games = response;
             }, function(error) {
-                console.log(error);
+                console.log("Error: " + error);
             });
 
             $scope.addNewGame = function(newGame) {
@@ -42,16 +42,17 @@ angular.module('Mahjong.controllers')
                 if ($rootScope.message.perspective == null) {
 
                     $rootScope.loading = true;
-                    $rootScope.loadingText = 'Verzoek word verzonden. (kan even duren rusland is niet zo snel...)';
+                    $rootScope.loadingText = 'Verzoek word verzonden. (dit kan even duren rusland is niet zo snel...)';
 
                     Games.newGame({
                             newGame
                         },
                         function(response) {
+                            $rootScope.message.text.push('Het spel is aangemaakt! veel plezier met spelen');
+                            $rootScope.message.perspective = 'success';
+                            
                             Games.query({}, function(response) {
                                 $scope.games = response;
-                                $rootScope.message.text.push('Het spel is aangemaakt! veel plezier met spelen');
-                                $rootScope.message.perspective = 'success';
                                 $rootScope.loading = false;
                             }, function(error) {
                                 console.log(error);

@@ -88,32 +88,30 @@
 
 <div class="container-fluid">
 	<!-- Example row of columns -->
-	<div class="row stackRow">
-		<div class="col-lg-4 col-md-6 someSpace" ng-repeat="game in games | filter:queryTemplate | filter:queryText | orderBy:state" ng:class="{gameItemListBackground: userInGroup(game.players)}">
-			<div class="hiddingText" ng-if="userInGroup(game.players)">
-				<p>meespelende</p>
-			</div>
-			<div class="row">
-				<img class="col-sm-3 img-responsive" ng-if="game.gameTemplate._id" ng-src="{{'img/'+ game.gameTemplate._id + '.png'}}"/>
-				<div class="col-sm-9">
-					<h2>{{ game.gameTemplate._id }} - {{ game.minPlayers }} tot {{ game.maxPlayers }} <span class="glyphicon glyphicon-user"></span></h2>
+	<div class="row">
+		<div class="col-lg-2 col-md-4 col-sm-6" ng-repeat="game in games | filter:queryTemplate | filter:queryText | orderBy:state" ng:class="{gameItemListBackground: userInGroup(game.players)}">
+			<div class="column-block column-background-{{game.gameTemplate.id}}">
+				<div class="hiddingText" ng-if="userInGroup(game.players)">
+					<p>meespelende</p>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-12">
-					<p>{{ game.status }}</p>
-					<p><strong>spelers: </strong><span ng-repeat="speler in game.players">{{ speler.name }}, </span></p>
-					<p class="hiddingText">game.state</p>
-					<p ng-if="game.state != 'finished'"><strong>start game: </strong>{{ game.startedOn | date:"d MMM HH:mm"}}</p>
-					<p class="text-muted">{{ game.createdBy.name }}</p>
+				<div class="row">
+					<div class="col-sm-12">
+						<h3>{{ game.gameTemplate._id }} - {{game.players.length}}/{{ game.maxPlayers }} <span class="glyphicon glyphicon-user"></span></h3>
+					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-6 vcenter">
-					<p><a class="btn btn-info btn-lg" ng-href="/dist/#/games/{{ game.id }}" role="button">Spel bekijken &raquo;</a></p>
+				<div class="row">
+					<div class="col-sm-12">
+						<p>{{ game.state }}</p>
+						<p><strong>spelers ({{game.minPlayers}}-{{ game.maxPlayers }}): </strong><br /><span ng-repeat="speler in game.players">{{ speler.name }}, </span></p>
+						<p ng-if="game.state != 'finished' && game.startedOn"><strong>start: </strong>{{ game.startedOn | date:"d MMM HH:mm"}}</p>
+						<p ng-if="!game.startedOn"><strong>start: </strong>not started</p>
+						<p class="text-muted">By: {{ game.createdBy.name }}</p>
+					</div>
 				</div>
-				<div class="col-sm-4 vcenter">
-					<h2><span class="glyphicon glyphicon-user"></span> {{game.players.length}}/{{ game.maxPlayers }}</h2>
+				<div class="row">
+					<div class="col-sm-12">
+						<p><a class="btn btn-info" ng-href="/#/games/{{ game.id }}" role="button">Spel bekijken &raquo;</a></p>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -1,3 +1,38 @@
+/* loading screen */
+#loadingDiv {
+  background-color: rgba(32, 32, 32, 0.9);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 998;
+}
+
+#loadingContainer {
+  width: 30%;
+  min-width: 480px;
+  height: 40%;
+  min-height: 400px;
+  margin: 0 auto;
+  margin-top: 200px;
+  padding: 10px;
+  border-radius: 5px;
+  vertical-align: center !important;
+  text-align: center;
+}
+
+#loadingImage {
+  margin: 0 auto;
+  width: 128px;
+  height: 64px;
+}
+
+#loadingText {
+  color: #3399FF;
+}
+
+/* end loading screen */
 .footer .container {
   text-align: center;
 }

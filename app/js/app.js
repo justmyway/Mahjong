@@ -14,42 +14,50 @@ require('./resources/resource-factory.js');
 // Create your app
 var app = angular.module('Mahjong', ['ngResource', 'ngRoute', 'ngCookies', 'Mahjong.controllers', 'Mahjong.httpRequest', 'Mahjong.resources', 'Mahjong.services']);
 
-app.run(
-	function($cookies, $rootScope){
+app.run(['$cookies', '$rootScope', function($cookies, $rootScope){
 
 		$rootScope.isLogedIn = function() {
             return $cookies.get('user') != null;
         };
 
+        $rootScope.startableGame = function(specificGame) {
+            if (specificGame.createdBy._id == $cookies.get('user')) {
+                if (specificGame.players.length <= specificGame.maxPlayers && specificGame.players.length >= specificGame.minPlayers) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
     }
-);
+]);
 
-app.config(['$routeProvider'/*, '$httpProvider'*/,
+app.config(['$routeProvider', '$httpProvider',
 
-    function($routeProvider/*, $httpProvider*/) {
+    function($routeProvider, $httpProvider) {
         $routeProvider.
         when('/games', {
             templateUrl: 'js/views/game-list.html',
             controller: 'GameListController'
-        })./*
+        }).
         when('/games/:gameId', {
-            templateUrl: 'js/views/game-specific.html',
+            templateUrl: 'js/views/game-details.html',
             controller: 'gameDetailController'
-        }).*/
+        }).
         when('/login', {
-            templateUrl: 'js/views/user-login.html',
+            templateUrl: 'js/views/user-logedin.html',
             controller: 'userLogin'
         }).
         when('/logout', {
-            templateUrl: 'js/views/user-logout.html',
+            templateUrl: 'js/views/user-logedout.html',
             controller: 'userLogout'
-        })/*.
+        }).
         when('/authcallback', {
-            templateUrl: 'js/views/user-authcallback.html',
+            templateUrl: 'js/views/user-login-callback.html',
             controller: 'userCallback'
         }).otherwise({
             redirectTo: '/games'
-        })*/;
-        //$httpProvider.interceptors.push('httpRequestInterceptor');
+        });
+        $httpProvider.interceptors.push('httpRequestInterceptor');
     }
 ]);

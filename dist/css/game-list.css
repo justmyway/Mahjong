@@ -1,0 +1,76 @@
+/* game list variables */
+/* END game list variables */
+.column-block {
+  padding: 0 10px;
+  margin: 14px 0;
+}
+
+.column-background-Dragon {
+  background: image-url("img/Dragon.png") no-repeat !important;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  border: 8px solid #c0392b;
+  background-color: #e74c3c;
+}
+
+.column-background-Monkey {
+  background: image-url("img/Monkey.png") no-repeat !important;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  border: 8px solid #2980b9;
+  background-color: #3498db;
+}
+
+.column-background-Ox {
+  background: image-url("img/Ox.png") no-repeat !important;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  border: 8px solid #d35400;
+  background-color: #e67e22;
+}
+
+.column-background-Ram {
+  background: image-url("img/Ram.png") no-repeat !important;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  border: 8px solid #16a085;
+  background-color: #1abc9c;
+}
+
+.column-background-Rooster {
+  background: image-url("img/Rooster.png") no-repeat !important;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  border: 8px solid #f39c12;
+  background-color: #f1c40f;
+}
+
+.column-background-Shanghai {
+  background: image-url("img/Shanghai.png") no-repeat !important;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  border: 8px solid #8e44ad;
+  background-color: #9b59b6;
+}
+
+.column-background-Snake {
+  background: image-url("img/Snake.png") no-repeat !important;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  border: 8px solid #7f8c8d;
+  background-color: #95a5a6;
+}

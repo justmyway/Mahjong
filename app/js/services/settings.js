@@ -3,7 +3,7 @@ angular.module('Mahjong.services', []).factory('Settings',
         var settings = {};
 
         settings.apiUrl = 'http://mahjongmayhem.herokuapp.com/';
-        settings.apiCallbackUrl = 'http://mahjongmayhem.herokuapp.com/auth/avans?callbackUrl=http://localhost:8080/dist/#/authcallback';
+        settings.apiCallbackUrl = 'http://mahjongmayhem.herokuapp.com/auth/avans?callbackUrl=http://127.0.0.1:3000/#/authcallback';
         settings.gameTemplates = {
             'Dragon': 'Dragon',
             'Monkey': 'Monkey',
