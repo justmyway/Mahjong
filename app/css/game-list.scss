@@ -14,3 +14,7 @@
 		background-color: #{nth($background-color-templates, $i)};
 	}
 }
+
+.players-names{
+	min-height: 90px;
+}

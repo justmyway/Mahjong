@@ -18,6 +18,8 @@ angular.module('Mahjong.controllers')
                 $rootScope.message = [];
                 $rootScope.message.text = [];
 
+                console.log(newGame);
+
                 if (newGame == undefined || newGame.templateName == null || newGame.minPlayers == null || newGame.maxPlayers == null) {
                     $rootScope.message.text.push('Graag alle velden invullen!');
                     $rootScope.message.perspective = 'error';
@@ -45,12 +47,12 @@ angular.module('Mahjong.controllers')
                     $rootScope.loadingText = 'Verzoek word verzonden. (dit kan even duren rusland is niet zo snel...)';
 
                     Games.newGame({
-                            newGame
+                            'Game': newGame
                         },
                         function(response) {
                             $rootScope.message.text.push('Het spel is aangemaakt! veel plezier met spelen');
                             $rootScope.message.perspective = 'success';
-                            
+
                             Games.query({}, function(response) {
                                 $scope.games = response;
                                 $rootScope.loading = false;

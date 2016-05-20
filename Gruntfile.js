@@ -13,6 +13,15 @@ module.exports = function(grunt) {
                 }
             }
         },
+        uglify: {
+            options: {
+                banner: '/*! Grunt Uglify <%= grunt.template.today("yyyy-mm-dd") %> */ '
+            },
+            build: {
+                src: 'dist/js/app.js',
+                dest: 'dist/js/app.min.js'
+            }
+        },
         copy: {
             all: {
                 // This copies all the html and css into the dist/ folder
@@ -69,6 +78,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-http-server');
 
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+
     // The default tasks to run when you type: grunt
-    grunt.registerTask('default', ['browserify', 'sass', 'copy', 'http-server', 'watch']);
+    grunt.registerTask('default', ['browserify', /*'uglify', */ 'sass', 'copy', 'http-server', 'watch']);
 };

@@ -7,7 +7,7 @@ angular.module('Mahjong.controllers')
         $rootScope.loading = true;
         $rootScope.loadingText = 'Het spel wordt met "warp speed" binnen gehaald. Een moment geduld a.u.b.';
 
-        /$scope.gameDetail = function(gameId) {
+        /*$scope.gameDetail = function(gameId) {
 
             Games.get({
                 id: gameId

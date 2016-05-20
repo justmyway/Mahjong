@@ -7,7 +7,8 @@ angular.module('Mahjong.resources', ['ngResource'])
             url: Settings.apiUrl + 'Games',
             transformRequest: function(data) {
                 data = JSON.stringify(data);
-                data = data.substring(11, data.length - 1);
+                data = data.substring(8, data.length - 1);
+                console.log(data);
                 return data;
             }
         },

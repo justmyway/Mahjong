@@ -96,13 +96,14 @@
 				</div>
 				<div class="row">
 					<div class="col-sm-12">
-						<h3>{{ game.gameTemplate._id }} - {{game.players.length}}/{{ game.maxPlayers }} <span class="glyphicon glyphicon-user"></span></h3>
+						<h2>{{ game.gameTemplate._id }}</h2>
+						<h3>{{game.players.length}}/{{ game.maxPlayers }} <span class="glyphicon glyphicon-user"></span></h3>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-sm-12">
 						<p>{{ game.state }}</p>
-						<p><strong>spelers ({{game.minPlayers}}-{{ game.maxPlayers }}): </strong><br /><span ng-repeat="speler in game.players">{{ speler.name }}, </span></p>
+						<p class="players-names"><strong>spelers ({{game.minPlayers}}-{{ game.maxPlayers }}): </strong><br /><span ng-repeat="speler in game.players">{{ speler.name }}, </span></p>
 						<p ng-if="game.state != 'finished' && game.startedOn"><strong>start: </strong>{{ game.startedOn | date:"d MMM HH:mm"}}</p>
 						<p ng-if="!game.startedOn"><strong>start: </strong>not started</p>
 						<p class="text-muted">By: {{ game.createdBy.name }}</p>
