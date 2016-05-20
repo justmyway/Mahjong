@@ -1,5 +1,5 @@
 angular.module('Mahjong.controllers')
-    .controller('GameListController', ['$rootScope', '$scope', 'Games', 'Settings',
+    .controller('gameListController', ['$rootScope', '$scope', 'Games', 'Settings',
         function($rootScope, $scope, Games, Settings) {
 
             $rootScope.loading = true;

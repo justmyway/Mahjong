@@ -1,5 +1,4 @@
 require('angular/angular');
-//require('angular-route/angular-route');
 require('angular-ui-router');
 require('angular-resource/angular-resource');
 require('angular-cookies/angular-cookies');
@@ -34,40 +33,54 @@ app.run(['$cookies', '$rootScope',
     }
 ]);
 
-app.config(function($stateProvider, $routeProvider, $httpProvider) {
+app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 
-        $routeProvider.otherwise("/games");
+        $urlRouterProvider.otherwise("/games");
 
         $stateProvider
             .state('games', {
-                url: "/games",
+                url: '/games',
                 templateUrl: 'js/views/game-list.html',
-                controller: 'GameListController'
+                controller: 'gameListController'
             })
+            .state('games.single', {
+                url: '/games/:gameId',
+                templateUrl: 'js/views/game-details.html',
+                controller: 'gameDetailController',
+                resolve: {
+                    singleGame: function($q){
+                        var deferred = $q.defer();
 
-        /*$routeProvider.
-        when('/games', {
-            templateUrl: 'js/views/game-list.html',
-            controller: 'GameListController'
-        }).
-        when('/games/:gameId', {
-            templateUrl: 'js/views/game-details.html',
-            controller: 'gameDetailController'
-        }).
-        when('/login', {
-            templateUrl: 'js/views/user-logedin.html',
-            controller: 'userLogin'
-        }).
-        when('/logout', {
-            templateUrl: 'js/views/user-logedout.html',
-            controller: 'userLogout'
-        }).
-        when('/authcallback', {
-            templateUrl: 'js/views/user-login-callback.html',
-            controller: 'userCallback'
-        }).otherwise({
-            redirectTo: '/games'
-        });
+                        Games.get({
+                            id: gameId
+                        }, function(game) {
+                            console.log('game opgehaald');
+                            deferred.resolve({'Error':'', 'Game': game});
+                        }, function(error) {
+                            console.log('Error', error);
+                            deferred.resolve({'Error': error, 'Game': ''});
+                        });
+
+                        return deferred.promise;
+                    }
+                }
+            })
+            .state('login', {
+                url: '/login',
+                templateUrl: 'js/views/user-logedin.html',
+                controller: 'userLogin'
+            })
+            .state('logout', {
+                url: '/logout',
+                templateUrl: 'js/views/user-logedout.html',
+                controller: 'userLogout'
+            })
+            .state('authcallback', {
+                url: '/authcallback',
+                templateUrl: 'js/views/user-login-callback.html',
+                controller: 'userCallback'
+            });
+
         $httpProvider.interceptors.push('httpRequestInterceptor');
-    }*/
-    );
+    }
+);
