@@ -1,5 +1,6 @@
 require('angular/angular');
-require('angular-route/angular-route');
+//require('angular-route/angular-route');
+require('angular-ui-router');
 require('angular-resource/angular-resource');
 require('angular-cookies/angular-cookies');
 
@@ -12,11 +13,12 @@ require('./resources/httpRequest.js');
 require('./resources/resource-factory.js');
 
 // Create your app
-var app = angular.module('Mahjong', ['ngResource', 'ngRoute', 'ngCookies', 'Mahjong.controllers', 'Mahjong.httpRequest', 'Mahjong.resources', 'Mahjong.services']);
+var app = angular.module('Mahjong', ['ngResource', 'ui.router', 'ngCookies', 'Mahjong.controllers', 'Mahjong.httpRequest', 'Mahjong.resources', 'Mahjong.services']);
 
-app.run(['$cookies', '$rootScope', function($cookies, $rootScope){
+app.run(['$cookies', '$rootScope',
+    function($cookies, $rootScope) {
 
-		$rootScope.isLogedIn = function() {
+        $rootScope.isLogedIn = function() {
             return $cookies.get('user') != null;
         };
 
@@ -32,10 +34,18 @@ app.run(['$cookies', '$rootScope', function($cookies, $rootScope){
     }
 ]);
 
-app.config(['$routeProvider', '$httpProvider',
+app.config(function($stateProvider, $routeProvider, $httpProvider) {
 
-    function($routeProvider, $httpProvider) {
-        $routeProvider.
+        $routeProvider.otherwise("/games");
+
+        $stateProvider
+            .state('games', {
+                url: "/games",
+                templateUrl: 'js/views/game-list.html',
+                controller: 'GameListController'
+            })
+
+        /*$routeProvider.
         when('/games', {
             templateUrl: 'js/views/game-list.html',
             controller: 'GameListController'
@@ -59,5 +69,5 @@ app.config(['$routeProvider', '$httpProvider',
             redirectTo: '/games'
         });
         $httpProvider.interceptors.push('httpRequestInterceptor');
-    }
-]);
+    }*/
+    );
