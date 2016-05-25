@@ -1,0 +1,1019 @@
+/* game list variables */
+/* END game list variables */
+/* board config */
+/* END board config */
+#fieldContent {
+  position: relative;
+  width: 1220px;
+  height: 830px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
+  border: 3px solid #996600;
+}
+
+#fieldContent h1 {
+  z-index: 500;
+}
+
+.tile {
+  position: absolute;
+  height: 90px;
+  width: 73px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  border-radius: 8px;
+}
+
+.selectedTile {
+  -webkit-box-shadow: 0px 0px 15px 20px rgba(52, 205, 247, 0.85);
+  -moz-box-shadow: 0px 0px 15px 20px rgba(52, 205, 247, 0.85);
+  box-shadow: 0px 0px 15px 20px rgba(52, 205, 247, 0.85);
+  -webkit-transition-duration: 400ms;
+  -moz-transition-duration: 400ms;
+  -o-transition-duration: 400ms;
+  transition-duration: 400ms;
+}
+
+.tile[xPos="0"] {
+  left: 0px;
+}
+
+.tile[xPos="1"] {
+  left: 38px;
+}
+
+.tile[xPos="2"] {
+  left: 76px;
+}
+
+.tile[xPos="3"] {
+  left: 114px;
+}
+
+.tile[xPos="4"] {
+  left: 152px;
+}
+
+.tile[xPos="5"] {
+  left: 190px;
+}
+
+.tile[xPos="6"] {
+  left: 228px;
+}
+
+.tile[xPos="7"] {
+  left: 266px;
+}
+
+.tile[xPos="8"] {
+  left: 304px;
+}
+
+.tile[xPos="9"] {
+  left: 342px;
+}
+
+.tile[xPos="10"] {
+  left: 380px;
+}
+
+.tile[xPos="11"] {
+  left: 418px;
+}
+
+.tile[xPos="12"] {
+  left: 456px;
+}
+
+.tile[xPos="13"] {
+  left: 494px;
+}
+
+.tile[xPos="14"] {
+  left: 532px;
+}
+
+.tile[xPos="15"] {
+  left: 570px;
+}
+
+.tile[xPos="16"] {
+  left: 608px;
+}
+
+.tile[xPos="17"] {
+  left: 646px;
+}
+
+.tile[xPos="18"] {
+  left: 684px;
+}
+
+.tile[xPos="19"] {
+  left: 722px;
+}
+
+.tile[xPos="20"] {
+  left: 760px;
+}
+
+.tile[xPos="21"] {
+  left: 798px;
+}
+
+.tile[xPos="22"] {
+  left: 836px;
+}
+
+.tile[xPos="23"] {
+  left: 874px;
+}
+
+.tile[xPos="24"] {
+  left: 912px;
+}
+
+.tile[xPos="25"] {
+  left: 950px;
+}
+
+.tile[xPos="26"] {
+  left: 988px;
+}
+
+.tile[xPos="27"] {
+  left: 1026px;
+}
+
+.tile[xPos="28"] {
+  left: 1064px;
+}
+
+.tile[xPos="29"] {
+  left: 1102px;
+}
+
+.tile[xPos="30"] {
+  left: 1140px;
+}
+
+.tile[xPos="31"] {
+  left: 1178px;
+}
+
+.tile[xPos="32"] {
+  left: 1216px;
+}
+
+.tile[xPos="33"] {
+  left: 1254px;
+}
+
+.tile[xPos="34"] {
+  left: 1292px;
+}
+
+.tile[xPos="35"] {
+  left: 1330px;
+}
+
+.tile[yPos="0"] {
+  top: 0px;
+}
+
+.tile[yPos="1"] {
+  top: 46.5px;
+}
+
+.tile[yPos="2"] {
+  top: 93px;
+}
+
+.tile[yPos="3"] {
+  top: 139.5px;
+}
+
+.tile[yPos="4"] {
+  top: 186px;
+}
+
+.tile[yPos="5"] {
+  top: 232.5px;
+}
+
+.tile[yPos="6"] {
+  top: 279px;
+}
+
+.tile[yPos="7"] {
+  top: 325.5px;
+}
+
+.tile[yPos="8"] {
+  top: 372px;
+}
+
+.tile[yPos="9"] {
+  top: 418.5px;
+}
+
+.tile[yPos="10"] {
+  top: 465px;
+}
+
+.tile[yPos="11"] {
+  top: 511.5px;
+}
+
+.tile[yPos="12"] {
+  top: 558px;
+}
+
+.tile[yPos="13"] {
+  top: 604.5px;
+}
+
+.tile[yPos="14"] {
+  top: 651px;
+}
+
+.tile[yPos="15"] {
+  top: 697.5px;
+}
+
+.tile[yPos="16"] {
+  top: 744px;
+}
+
+.tile[yPos="17"] {
+  top: 790.5px;
+}
+
+.tile[yPos="18"] {
+  top: 837px;
+}
+
+.tile[yPos="19"] {
+  top: 883.5px;
+}
+
+.tile[yPos="20"] {
+  top: 930px;
+}
+
+.tile[zPos="0"] {
+  z-index: 400;
+  -ms-transform: translate(0px, 0px);
+  -webkit-transform: translate(0px, 0px);
+  transform: translate(0px, 0px);
+}
+
+.selectedTile[zPos="0"] {
+  z-index: 401;
+  -ms-transform: translate(0px, 0px);
+  -webkit-transform: translate(0px, 0px);
+  transform: translate(0px, 0px);
+}
+
+.tile[zPos="0"]:hover {
+  -webkit-box-shadow: 0px 0px 15px 20px rgba(1, 255, 1, 0.85);
+  -moz-box-shadow: 0px 0px 15px 20px rgba(1, 255, 1, 0.85);
+  box-shadow: 0px 0px 15px 20px rgba(1, 255, 1, 0.85);
+  -webkit-transition-duration: 100ms;
+  -moz-transition-duration: 100ms;
+  -o-transition-duration: 100ms;
+  transition-duration: 100ms;
+  z-index: 401;
+}
+
+.tile[zPos="1"] {
+  z-index: 402;
+  -ms-transform: translate(-6px, -6px);
+  -webkit-transform: translate(-6px, -6px);
+  transform: translate(-6px, -6px);
+}
+
+.selectedTile[zPos="1"] {
+  z-index: 403;
+  -ms-transform: translate(-6px, -6px);
+  -webkit-transform: translate(-6px, -6px);
+  transform: translate(-6px, -6px);
+}
+
+.tile[zPos="1"]:hover {
+  -webkit-box-shadow: 0px 0px 15px 20px rgba(1, 255, 1, 0.85);
+  -moz-box-shadow: 0px 0px 15px 20px rgba(1, 255, 1, 0.85);
+  box-shadow: 0px 0px 15px 20px rgba(1, 255, 1, 0.85);
+  -webkit-transition-duration: 100ms;
+  -moz-transition-duration: 100ms;
+  -o-transition-duration: 100ms;
+  transition-duration: 100ms;
+  z-index: 403;
+}
+
+.tile[zPos="2"] {
+  z-index: 404;
+  -ms-transform: translate(-12px, -12px);
+  -webkit-transform: translate(-12px, -12px);
+  transform: translate(-12px, -12px);
+}
+
+.selectedTile[zPos="2"] {
+  z-index: 405;
+  -ms-transform: translate(-12px, -12px);
+  -webkit-transform: translate(-12px, -12px);
+  transform: translate(-12px, -12px);
+}
+
+.tile[zPos="2"]:hover {
+  -webkit-box-shadow: 0px 0px 15px 20px rgba(1, 255, 1, 0.85);
+  -moz-box-shadow: 0px 0px 15px 20px rgba(1, 255, 1, 0.85);
+  box-shadow: 0px 0px 15px 20px rgba(1, 255, 1, 0.85);
+  -webkit-transition-duration: 100ms;
+  -moz-transition-duration: 100ms;
+  -o-transition-duration: 100ms;
+  transition-duration: 100ms;
+  z-index: 405;
+}
+
+.tile[zPos="3"] {
+  z-index: 406;
+  -ms-transform: translate(-18px, -18px);
+  -webkit-transform: translate(-18px, -18px);
+  transform: translate(-18px, -18px);
+}
+
+.selectedTile[zPos="3"] {
+  z-index: 407;
+  -ms-transform: translate(-18px, -18px);
+  -webkit-transform: translate(-18px, -18px);
+  transform: translate(-18px, -18px);
+}
+
+.tile[zPos="3"]:hover {
+  -webkit-box-shadow: 0px 0px 15px 20px rgba(1, 255, 1, 0.85);
+  -moz-box-shadow: 0px 0px 15px 20px rgba(1, 255, 1, 0.85);
+  box-shadow: 0px 0px 15px 20px rgba(1, 255, 1, 0.85);
+  -webkit-transition-duration: 100ms;
+  -moz-transition-duration: 100ms;
+  -o-transition-duration: 100ms;
+  transition-duration: 100ms;
+  z-index: 407;
+}
+
+.tile[zPos="4"] {
+  z-index: 408;
+  -ms-transform: translate(-24px, -24px);
+  -webkit-transform: translate(-24px, -24px);
+  transform: translate(-24px, -24px);
+}
+
+.selectedTile[zPos="4"] {
+  z-index: 409;
+  -ms-transform: translate(-24px, -24px);
+  -webkit-transform: translate(-24px, -24px);
+  transform: translate(-24px, -24px);
+}
+
+.tile[zPos="4"]:hover {
+  -webkit-box-shadow: 0px 0px 15px 20px rgba(1, 255, 1, 0.85);
+  -moz-box-shadow: 0px 0px 15px 20px rgba(1, 255, 1, 0.85);
+  box-shadow: 0px 0px 15px 20px rgba(1, 255, 1, 0.85);
+  -webkit-transition-duration: 100ms;
+  -moz-transition-duration: 100ms;
+  -o-transition-duration: 100ms;
+  transition-duration: 100ms;
+  z-index: 409;
+}
+
+.tile[zPos="5"] {
+  z-index: 410;
+  -ms-transform: translate(-30px, -30px);
+  -webkit-transform: translate(-30px, -30px);
+  transform: translate(-30px, -30px);
+}
+
+.selectedTile[zPos="5"] {
+  z-index: 411;
+  -ms-transform: translate(-30px, -30px);
+  -webkit-transform: translate(-30px, -30px);
+  transform: translate(-30px, -30px);
+}
+
+.tile[zPos="5"]:hover {
+  -webkit-box-shadow: 0px 0px 15px 20px rgba(1, 255, 1, 0.85);
+  -moz-box-shadow: 0px 0px 15px 20px rgba(1, 255, 1, 0.85);
+  box-shadow: 0px 0px 15px 20px rgba(1, 255, 1, 0.85);
+  -webkit-transition-duration: 100ms;
+  -moz-transition-duration: 100ms;
+  -o-transition-duration: 100ms;
+  transition-duration: 100ms;
+  z-index: 411;
+}
+
+.tile[zPos="6"] {
+  z-index: 412;
+  -ms-transform: translate(-36px, -36px);
+  -webkit-transform: translate(-36px, -36px);
+  transform: translate(-36px, -36px);
+}
+
+.selectedTile[zPos="6"] {
+  z-index: 413;
+  -ms-transform: translate(-36px, -36px);
+  -webkit-transform: translate(-36px, -36px);
+  transform: translate(-36px, -36px);
+}
+
+.tile[zPos="6"]:hover {
+  -webkit-box-shadow: 0px 0px 15px 20px rgba(1, 255, 1, 0.85);
+  -moz-box-shadow: 0px 0px 15px 20px rgba(1, 255, 1, 0.85);
+  box-shadow: 0px 0px 15px 20px rgba(1, 255, 1, 0.85);
+  -webkit-transition-duration: 100ms;
+  -moz-transition-duration: 100ms;
+  -o-transition-duration: 100ms;
+  transition-duration: 100ms;
+  z-index: 413;
+}
+
+div[name="1"][suit="Character"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") 0px 0px;
+}
+
+div[name="2"][suit="Character"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -73px 0px;
+}
+
+div[name="3"][suit="Character"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -146px 0px;
+}
+
+div[name="4"][suit="Character"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -219px 0px;
+}
+
+div[name="5"][suit="Character"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -292px 0px;
+}
+
+div[name="6"][suit="Character"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -365px 0px;
+}
+
+div[name="7"][suit="Character"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -438px 0px;
+}
+
+div[name="8"][suit="Character"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -511px 0px;
+}
+
+div[name="9"][suit="Character"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -584px 0px;
+}
+
+div[name="10"][suit="Character"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -657px 0px;
+}
+
+div[name="Spring"][suit="Character"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -657px 0px;
+}
+
+div[name="Summer"][suit="Character"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -730px 0px;
+}
+
+div[name="Autumn"][suit="Character"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -803px 0px;
+}
+
+div[name="Winter"][suit="Character"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -876px 0px;
+}
+
+div[name="Bamboo"][suit="Character"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -657px 0px;
+}
+
+div[name="Plum"][suit="Character"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -730px 0px;
+}
+
+div[name="Orchid"][suit="Character"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -803px 0px;
+}
+
+div[name="Chrysantememum"][suit="Character"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -876px 0px;
+}
+
+div[name="North"][suit="Character"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -657px 0px;
+}
+
+div[name="East"][suit="Character"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -803px 0px;
+}
+
+div[name="South"][suit="Character"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -730px 0px;
+}
+
+div[name="West"][suit="Character"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -876px 0px;
+}
+
+div[name="1"][suit="Bamboo"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") 0px -90px;
+}
+
+div[name="2"][suit="Bamboo"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -73px -90px;
+}
+
+div[name="3"][suit="Bamboo"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -146px -90px;
+}
+
+div[name="4"][suit="Bamboo"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -219px -90px;
+}
+
+div[name="5"][suit="Bamboo"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -292px -90px;
+}
+
+div[name="6"][suit="Bamboo"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -365px -90px;
+}
+
+div[name="7"][suit="Bamboo"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -438px -90px;
+}
+
+div[name="8"][suit="Bamboo"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -511px -90px;
+}
+
+div[name="9"][suit="Bamboo"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -584px -90px;
+}
+
+div[name="10"][suit="Bamboo"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -657px -90px;
+}
+
+div[name="Spring"][suit="Bamboo"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -657px -90px;
+}
+
+div[name="Summer"][suit="Bamboo"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -730px -90px;
+}
+
+div[name="Autumn"][suit="Bamboo"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -803px -90px;
+}
+
+div[name="Winter"][suit="Bamboo"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -876px -90px;
+}
+
+div[name="Bamboo"][suit="Bamboo"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -657px -90px;
+}
+
+div[name="Plum"][suit="Bamboo"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -730px -90px;
+}
+
+div[name="Orchid"][suit="Bamboo"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -803px -90px;
+}
+
+div[name="Chrysantememum"][suit="Bamboo"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -876px -90px;
+}
+
+div[name="North"][suit="Bamboo"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -657px -90px;
+}
+
+div[name="East"][suit="Bamboo"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -803px -90px;
+}
+
+div[name="South"][suit="Bamboo"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -730px -90px;
+}
+
+div[name="West"][suit="Bamboo"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -876px -90px;
+}
+
+div[name="1"][suit="Circle"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") 0px -180px;
+}
+
+div[name="2"][suit="Circle"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -73px -180px;
+}
+
+div[name="3"][suit="Circle"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -146px -180px;
+}
+
+div[name="4"][suit="Circle"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -219px -180px;
+}
+
+div[name="5"][suit="Circle"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -292px -180px;
+}
+
+div[name="6"][suit="Circle"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -365px -180px;
+}
+
+div[name="7"][suit="Circle"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -438px -180px;
+}
+
+div[name="8"][suit="Circle"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -511px -180px;
+}
+
+div[name="9"][suit="Circle"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -584px -180px;
+}
+
+div[name="10"][suit="Circle"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -657px -180px;
+}
+
+div[name="Spring"][suit="Circle"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -657px -180px;
+}
+
+div[name="Summer"][suit="Circle"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -730px -180px;
+}
+
+div[name="Autumn"][suit="Circle"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -803px -180px;
+}
+
+div[name="Winter"][suit="Circle"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -876px -180px;
+}
+
+div[name="Bamboo"][suit="Circle"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -657px -180px;
+}
+
+div[name="Plum"][suit="Circle"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -730px -180px;
+}
+
+div[name="Orchid"][suit="Circle"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -803px -180px;
+}
+
+div[name="Chrysantememum"][suit="Circle"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -876px -180px;
+}
+
+div[name="North"][suit="Circle"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -657px -180px;
+}
+
+div[name="East"][suit="Circle"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -803px -180px;
+}
+
+div[name="South"][suit="Circle"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -730px -180px;
+}
+
+div[name="West"][suit="Circle"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -876px -180px;
+}
+
+div[name="1"][suit="Season"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") 0px -90px;
+}
+
+div[name="2"][suit="Season"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -73px -90px;
+}
+
+div[name="3"][suit="Season"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -146px -90px;
+}
+
+div[name="4"][suit="Season"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -219px -90px;
+}
+
+div[name="5"][suit="Season"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -292px -90px;
+}
+
+div[name="6"][suit="Season"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -365px -90px;
+}
+
+div[name="7"][suit="Season"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -438px -90px;
+}
+
+div[name="8"][suit="Season"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -511px -90px;
+}
+
+div[name="9"][suit="Season"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -584px -90px;
+}
+
+div[name="10"][suit="Season"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -657px -90px;
+}
+
+div[name="Spring"][suit="Season"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -657px -90px;
+}
+
+div[name="Summer"][suit="Season"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -730px -90px;
+}
+
+div[name="Autumn"][suit="Season"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -803px -90px;
+}
+
+div[name="Winter"][suit="Season"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -876px -90px;
+}
+
+div[name="Bamboo"][suit="Season"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -657px -90px;
+}
+
+div[name="Plum"][suit="Season"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -730px -90px;
+}
+
+div[name="Orchid"][suit="Season"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -803px -90px;
+}
+
+div[name="Chrysantememum"][suit="Season"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -876px -90px;
+}
+
+div[name="North"][suit="Season"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -657px -90px;
+}
+
+div[name="East"][suit="Season"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -803px -90px;
+}
+
+div[name="South"][suit="Season"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -730px -90px;
+}
+
+div[name="West"][suit="Season"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -876px -90px;
+}
+
+div[name="1"][suit="Flower"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") 0px -180px;
+}
+
+div[name="2"][suit="Flower"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -73px -180px;
+}
+
+div[name="3"][suit="Flower"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -146px -180px;
+}
+
+div[name="4"][suit="Flower"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -219px -180px;
+}
+
+div[name="5"][suit="Flower"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -292px -180px;
+}
+
+div[name="6"][suit="Flower"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -365px -180px;
+}
+
+div[name="7"][suit="Flower"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -438px -180px;
+}
+
+div[name="8"][suit="Flower"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -511px -180px;
+}
+
+div[name="9"][suit="Flower"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -584px -180px;
+}
+
+div[name="10"][suit="Flower"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -657px -180px;
+}
+
+div[name="Spring"][suit="Flower"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -657px -180px;
+}
+
+div[name="Summer"][suit="Flower"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -730px -180px;
+}
+
+div[name="Autumn"][suit="Flower"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -803px -180px;
+}
+
+div[name="Winter"][suit="Flower"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -876px -180px;
+}
+
+div[name="Bamboo"][suit="Flower"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -657px -180px;
+}
+
+div[name="Plum"][suit="Flower"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -730px -180px;
+}
+
+div[name="Orchid"][suit="Flower"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -803px -180px;
+}
+
+div[name="Chrysantememum"][suit="Flower"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -876px -180px;
+}
+
+div[name="North"][suit="Flower"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -657px -180px;
+}
+
+div[name="East"][suit="Flower"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -803px -180px;
+}
+
+div[name="South"][suit="Flower"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -730px -180px;
+}
+
+div[name="West"][suit="Flower"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -876px -180px;
+}
+
+div[name="1"][suit="Wind"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") 0px 0px;
+}
+
+div[name="2"][suit="Wind"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -73px 0px;
+}
+
+div[name="3"][suit="Wind"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -146px 0px;
+}
+
+div[name="4"][suit="Wind"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -219px 0px;
+}
+
+div[name="5"][suit="Wind"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -292px 0px;
+}
+
+div[name="6"][suit="Wind"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -365px 0px;
+}
+
+div[name="7"][suit="Wind"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -438px 0px;
+}
+
+div[name="8"][suit="Wind"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -511px 0px;
+}
+
+div[name="9"][suit="Wind"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -584px 0px;
+}
+
+div[name="10"][suit="Wind"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -657px 0px;
+}
+
+div[name="Spring"][suit="Wind"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -657px 0px;
+}
+
+div[name="Summer"][suit="Wind"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -730px 0px;
+}
+
+div[name="Autumn"][suit="Wind"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -803px 0px;
+}
+
+div[name="Winter"][suit="Wind"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -876px 0px;
+}
+
+div[name="Bamboo"][suit="Wind"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -657px 0px;
+}
+
+div[name="Plum"][suit="Wind"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -730px 0px;
+}
+
+div[name="Orchid"][suit="Wind"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -803px 0px;
+}
+
+div[name="Chrysantememum"][suit="Wind"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -876px 0px;
+}
+
+div[name="North"][suit="Wind"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -657px 0px;
+}
+
+div[name="East"][suit="Wind"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -803px 0px;
+}
+
+div[name="South"][suit="Wind"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -730px 0px;
+}
+
+div[name="West"][suit="Wind"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -876px 0px;
+}
+
+div[name="Green"][suit="Dragon"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -951px 0px;
+}
+
+div[name="Red"][suit="Dragon"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -951px -90px;
+}
+
+div[name="White"][suit="Dragon"] {
+  background: url("../../img/Mahjong_sprite_sheet.png") -951px -180px;
+}
+
+.Dragon {
+  width: 1180px !important;
+  height: 830px !important;
+}
+
+.Monkey {
+  width: 1180px !important;
+  height: 830px !important;
+}
+
+.Ox {
+  width: 1140px !important;
+  height: 830px !important;
+}
+
+.Ram {
+  width: 1220px !important;
+  height: 830px !important;
+}
+
+.Rooster {
+  width: 1220px !important;
+  height: 830px !important;
+}
+
+.Shanghai {
+  width: 1220px !important;
+  height: 830px !important;
+}
+
+.Snake {
+  width: 1220px !important;
+  height: 830px !important;
+}

@@ -1,64 +1,100 @@
 angular.module('Mahjong.controllers')
-    .controller('gameDetailController', function($rootScope, $scope, $routeParams, Games, GamePlayers, GameTiles, Settings, TileProccessing) {
+    .controller('gameDetailsController', ['$rootScope', '$scope', '$timeout', 'singleGame', '$cookies', '$state','Games', 'GamePlayers', 
+        function($rootScope, $scope, $timeout, singleGame, $cookies, $state, Games, GamePlayers/*, GamePlayers, GameTiles, TileProccessing*/) {
 
-        $scope.gameDetails = null;
+        $rootScope.gameDetails = null;
         $scope.gameTiles = null;
 
-        $rootScope.loading = true;
-        $rootScope.loadingText = 'Het spel wordt met "warp speed" binnen gehaald. Een moment geduld a.u.b.';
-
-        /*$scope.gameDetail = function(gameId) {
-
-            Games.get({
-                id: gameId
-            }, function(response) {
-                $scope.gameDetails = response;
-                if (response.state == 'playing')
-                    $scope.gameTile(gameId);
-
-                $rootScope.loading = false;
-            }, function(error) {
-                console.log('Error', error);
-            });
+        if(singleGame.Game == undefined){
+            $rootScope.loading = true;
+            $rootScope.loadingText = 'Helaas kon het spel niet worden opgehaald, <br>' + singleGame.Error;
+        }else{
+            $rootScope.gameDetails = singleGame.Game;
         }
 
-        $scope.gameTile = function(gameId) {
+        //helping functions
 
-            GameTiles.available({
-                id: gameId
-            }, function(response) {
-                TileProccessing.setGameTiles(response);
-                $scope.gameTiles = response;
-            }, function(error) {
-                console.log('Error', error);
-            });
+        $scope.userParticepating = function(){
+            var participatingUsers = $rootScope.gameDetails.players;
+            var currentUser = $cookies.get('user');
+            for (var i = participatingUsers.length - 1; i >= 0; i--) {
+                if(participatingUsers[i]._id == currentUser){
+                    return true;
+                }
+            };
+            return false;
         }
 
-        $scope.gameDetail($routeParams.gameId);
+        //view functions
 
-        $scope.anticepateGame = function(gameId) {
+        $rootScope.canAnticepateGame = function(){
+            var game = $rootScope.gameDetails;
 
+            if(game.state == "open"){
+                if(game.players.length < game.maxPlayers){
+                    if(!$scope.userParticepating()){
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        $scope.canBeginGame = function(){
+            var game = $rootScope.gameDetails;
+            if(game.createdBy._id == $cookies.get('user')){
+                if(game.state == "open"){
+                    if(game.players.length >= game.minPlayers){
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        //view actions
+
+        $scope.anticepateGame = function(){
+            $rootScope.loading = true;
+            $rootScope.loadingText = 'Verzoek tot deelnemen wordt verwerkt';
+            
             GamePlayers.save({
-                id: gameId
+                id: $rootScope.gameDetails._id
             }, function(response) {
-                $scope.gameDetail(gameId);
+                $timeout(function(){
+                    $rootScope.loading = false;
+                    $state.reload();
+                }, 1000);
             }, function(error) {
                 console.log('Error', error);
-                $scope.gameDetail(gameId);
+                $rootScope.loadingText = 'Error: ' + error.statusText;
+                $timeout(function(){
+                    $rootScope.loading = false;
+                }, 5500);
             });
         }
 
-        $scope.startGame = function(gameId) {
-
+        $scope.startGame = function(){
+            $rootScope.loading = true;
+            $rootScope.loadingText = 'Verzoek om te starten wordt verwerkt';
+            
             Games.start({
-                id: gameId
+                id: $rootScope.gameDetails._id
             }, function(response) {
-                $scope.gameDetail(gameId);
+                $timeout(function(){
+                    $rootScope.loading = false;
+                    $state.reload();
+                }, 1000);
             }, function(error) {
-                console.log(error);
+                console.log('Error', error);
+                $rootScope.loadingText = 'Error: ' + error.statusText;
+                $timeout(function(){
+                    $rootScope.loading = false;
+                }, 5500);
             });
         }
 
+        /*
         $scope.checkTile = function(tile) {
 
             if (TileProccessing.accessableTile(tile) == true) {
@@ -90,4 +126,4 @@ angular.module('Mahjong.controllers')
         $scope.activeTile = function(tileId) {
             return TileProccessing.currentTileId() == tileId;
         }*/
-    });
+    }]);

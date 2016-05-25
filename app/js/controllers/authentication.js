@@ -9,8 +9,8 @@ angular.module('Mahjong.controllers')
     $location.path('/#/');
 })
 
-.controller('userCallback', function($location, $routeParams, $cookies, $http) {
-    $cookies.put('user', $routeParams.username);
-    $cookies.put('token', $routeParams.token);
-    $location.path('/#/games');
+.controller('userCallback', function($location, $cookies, $http, $state) {
+    $cookies.put('user', $location.search()['username']);
+    $cookies.put('token', $location.search()['token']);
+    $state.go('games');
 })

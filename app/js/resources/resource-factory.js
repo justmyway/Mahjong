@@ -8,7 +8,6 @@ angular.module('Mahjong.resources', ['ngResource'])
             transformRequest: function(data) {
                 data = JSON.stringify(data);
                 data = data.substring(8, data.length - 1);
-                console.log(data);
                 return data;
             }
         },
@@ -22,20 +21,12 @@ angular.module('Mahjong.resources', ['ngResource'])
     });
 })
 
-.factory('GamePlayers', function($resource, Settings, $cookies) {
-    return $resource(Settings.apiUri + 'Games/:id/Players');
+.factory('GamePlayers', function($resource, Settings) {
+    return $resource(Settings.apiUrl + 'Games/:id/Players', {id:'@id'});
 })
 
 .factory('GameTiles', function($resource, Settings) {
-    return $resource(Settings.apiUri + 'Games/:id/Tiles', {}, {
-        /*'available': {
-            method: 'GET',
-            isArray: true,
-            params: {
-                'id': '@id',
-                'matched': 'false'
-            }
-        },
+    return $resource(Settings.apiUrl + 'Games/:id/Tiles', {}, {
         'matched': {
             method: 'GET',
             isArray: true,
@@ -43,18 +34,26 @@ angular.module('Mahjong.resources', ['ngResource'])
                 'id': '@id',
                 'matched': 'true'
             }
-        },*/
+        },
+        'unMatched': {
+            method: 'GET',
+            isArray: true,
+            params: {
+                'id': '@id',
+                'matched': 'false'
+            }
+        },
         'match': {
             method: 'POST',
-            url: Settings.apiUri + 'Games/:id/Tiles/matches',
+            url: Settings.apiUrl + 'Games/:id/Tiles/matches',
             isArray: true,
             params: {
                 'id': '@id',
             },
             transformRequest: function(tiles) {
                 var data = {};
-                data.tile1Id = tiles.tile1;
-                data.tile2Id = tiles.tile2;
+                data.tile1Id = tiles.tile1Id;
+                data.tile2Id = tiles.tile2Id;
                 data = angular.toJson(data, false);
                 return data;
             }

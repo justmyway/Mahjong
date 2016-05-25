@@ -1,0 +1,156 @@
+@import '../mixin';
+@import '../settings';
+
+/* board config */
+
+$tile-width: 73px;
+$tile-height: 90px;
+$sheet-width: 73;
+$sheet-height: 90;
+$tile-space: 3px;
+$tile-space-3d: 6px;
+
+$tileSprite: '../../img/Mahjong_sprite_sheet.png';
+
+$tileSuits: (
+	"Character"	0,
+	"Bamboo"	1,
+	"Circle"	2,
+	"Season"	1,
+	"Flower"	2,
+	"Wind"		0,
+);
+
+$tileNames: (
+	"1"	0,
+	"2"	1,
+	"3"	2,
+	"4"	3,
+	"5" 4,
+	"6" 5,
+	"7" 6,
+	"8" 7,
+	"9" 8,
+	"10" 9,
+
+	"Spring" 9,
+	"Summer" 10,
+	"Autumn" 11,
+	"Winter" 12,
+
+	"Bamboo" 9,
+	"Plum" 10,
+	"Orchid" 11,
+	"Chrysantememum" 12,
+
+	"North" 9,
+	"East" 11,
+	"South" 10,
+	"West" 12
+);
+
+$tileDragon: (
+	"Green"	0,
+	"Red"	1,
+	"White" 2
+);
+
+$templateSize: (
+	("Dragon"	1180	830),
+	("Monkey"	1180	830),
+	("Ox"		1140	830),
+	("Ram"		1220	830),
+	("Rooster"	1220	830),
+	("Shanghai"	1220	830),
+	("Snake"	1220	830)
+);
+
+
+/* END board config */
+
+#fieldContent {
+	position: relative;
+	width: 1220px;
+	height: 830px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	@include border-radius(5px);
+	border: 3px solid #996600;
+}
+
+#fieldContent h1{
+	z-index: 500;
+}
+
+.tile {
+	position: absolute;
+	height: $tile-height;
+	width: $tile-width;
+	@include border-radius(8px);
+}
+
+.selectedTile {
+	@include box-shadow(0px 0px 15px 20px rgba(52, 205, 247, .85));
+    -webkit-transition-duration: 400ms;
+    -moz-transition-duration: 400ms;
+    -o-transition-duration: 400ms;
+    transition-duration: 400ms;
+}
+
+@for $i from 0 through 35{
+	.tile[xPos="#{$i}"]{
+		left: ((($tile-width + $tile-space) * $i)/2);
+	}
+}
+
+@for $i from 0 through 20{
+	.tile[yPos="#{$i}"]{
+		top: ((($tile-height + $tile-space) * $i)/2);
+	}
+}
+
+@for $i from 0 through 6{
+	.tile[zPos="#{$i}"]{
+		z-index: (400 + ($i * 2));
+		@include transform-translate($tile-space-3d*$i*-1, $tile-space-3d*$i*-1);
+	}
+	.selectedTile[zPos="#{$i}"]{
+		z-index: (401 + ($i * 2));
+		@include transform-translate($tile-space-3d*$i*-1, $tile-space-3d*$i*-1);
+	}
+	.tile[zPos="#{$i}"]:hover {
+		@include box-shadow(0px 0px 15px 20px rgba(1, 255, 1, .85));
+	    -webkit-transition-duration: 100ms;
+	    -moz-transition-duration: 100ms;
+	    -o-transition-duration: 100ms;
+	    transition-duration: 100ms;
+	    z-index: (401 + ($i * 2));
+	}
+}
+
+@each $suit in $tileSuits{
+
+	@each $name in $tileNames{
+
+		div[name="#{nth($name, 1)}"][suit="#{nth($suit, 1)}"]{
+
+			background: url($tileSprite) ((nth($name, 2)*$sheet-width)*-1px) ((nth($suit, 2)*$sheet-height)*-1px);
+		}
+	}
+}
+
+@each $dragon in $tileDragon{
+
+	div[name="#{nth($dragon, 1)}"][suit="Dragon"]{
+
+		background: url($tileSprite) ((13*$sheet-width)+2)*-1px (nth($dragon, 2)*$sheet-height)*-1px;
+	}
+}
+
+@each $template in $templateSize{
+	.#{nth($template, 1)}{
+		width: (nth($template, 2)*1px) !important;
+		height: (nth($template, 3)*1px) !important;
+	}
+}

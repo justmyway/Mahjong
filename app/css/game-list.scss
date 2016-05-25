@@ -13,6 +13,12 @@
 		border: 8px solid #{nth($border-color-templates, $i)};
 		background-color: #{nth($background-color-templates, $i)};
 	}
+
+	.column-background-#{nth($templates, $i)}:hover{
+		background: image-url("img/#{nth($templates, $i)}.png") no-repeat !important;
+		border: 8px solid #{nth($background-color-templates, $i)};
+		background-color: #{nth($border-color-templates, $i)};
+	}
 }
 
 .players-names{

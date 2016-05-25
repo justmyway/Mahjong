@@ -3,11 +3,13 @@ angular.module('Mahjong.controllers')
         function($rootScope, $scope, Games, Settings) {
 
             $rootScope.loading = true;
+            $rootScope.loadingText = "Games worden opgehaalt";
             $scope.games = null;
             $scope.gameTemplates = Settings.gameTemplates
 
             Games.query({}, function(response) {
                 $rootScope.loading = false;
+                $rootScope.loadingText = "";
                 $scope.games = response;
             }, function(error) {
                 console.log("Error: " + error);
@@ -32,7 +34,7 @@ angular.module('Mahjong.controllers')
                     $rootScope.message.perspective = 'error';
                 }
 
-                if (newGame.maxPlayers < 3 || newGame.maxPlayers > 32) {
+                if (newGame.maxPlayers < 1 || newGame.maxPlayers > 32) {
                     $rootScope.message.text.push('Het maximaal aantal spelers moet tussen de 3 en 32 personen liggen.');
                     $rootScope.message.perspective = 'error';
                 }

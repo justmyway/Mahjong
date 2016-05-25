@@ -1,1 +1,10 @@
-Details
+<div class="details-menu">
+	<a class="btn btn-success" ui-sref=".playingField" role="button">Spel bekijken</a>
+	<a class="btn btn-warning" ui-sref=".matchedTiles" role="button">Deelnemers & Gematchte tegels</a>
+	<button id="anticepateGame" class="btn btn-info" type="button" ng-click="anticepateGame()" ng-disabled="!canAnticepateGame()">Deelnemen aan game</button>
+	<button class="btn btn-danger" type="button" ng-click="startGame()" ng-disabled="!canBeginGame()">Game beginnen</button>
+</div>
+
+<hr>
+
+<div ui-view></div>

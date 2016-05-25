@@ -1,0 +1,11 @@
+<div>
+	<h1>Deelnemers:</h1>
+	<ul id="gameParticepants" ng-repeat="player in participants">
+		<li><big>{{ player.name }}</big> - {{ player._id }}</li>
+	</ul>
+	<h1>Gematchte tegels:</h1>
+	<div >
+		<h3 class="error" ng-if="matchedTiles.Error">{{ matchedTiles.Error.data.message }}</h3>
+		<div ng-if="matchedTiles.Tiles"></div>
+	</div>
+</div>
