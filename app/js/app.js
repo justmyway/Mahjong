@@ -26,95 +26,111 @@ app.run(['$cookies', '$rootScope',
 
 app.config(function($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider) {
 
-        $urlRouterProvider.otherwise("/games");
+    $urlRouterProvider.otherwise("/games");
 
-        $stateProvider
-            .state('games', {
-                url: '/games',
-                templateUrl: 'js/views/game-list.html',
-                controller: 'gameListController'
-            })
-            .state('gameDetails', {
-                url: '/games/:gameId',
-                templateUrl: 'js/views/game-details.html',
-                controller: 'gameDetailsController',
-                resolve: {
-                    singleGame: function($stateParams, Games, $q){
+    $stateProvider
+        .state('games', {
+            url: '/games',
+            templateUrl: 'js/views/game-list.html',
+            controller: 'gameListController'
+        })
+        .state('gameDetails', {
+            url: '/games/:gameId',
+            templateUrl: 'js/views/game-details.html',
+            controller: 'gameDetailsController',
+            resolve: {
+                singleGame: function($stateParams, Games, $q) {
 
-                        var deferred = $q.defer();
+                    var deferred = $q.defer();
 
-                        Games.get({
-                            id: $stateParams.gameId
-                        }, function(game) {
-                            deferred.resolve({'Error': undefined, 'Game': game});
-                        }, function(error) {
-                            deferred.resolve({'Error': error, 'Game': undefined});
+                    Games.get({
+                        id: $stateParams.gameId
+                    }, function(game) {
+                        deferred.resolve({
+                            'Error': undefined,
+                            'Game': game
                         });
-
-                        return deferred.promise;
-                    }
-                }
-            })
-            .state('gameDetails.playingField', {
-                url: '/playing-field',
-                templateUrl: 'js/views/game-details-field.html',
-                controller: 'gameDetailsPlayingFieldController',
-                resolve: {
-                    tiles: function($stateParams, GameTiles, $q){
-
-                        var deferred = $q.defer();
-
-                        GameTiles.unMatched({
-                            id: $stateParams.gameId
-                        }, function(tiles) {
-                            deferred.resolve({'Error': undefined, 'Tiles': tiles});
-                        }, function(error) {
-                            deferred.resolve({'Error': error, 'Tiles': undefined});
+                    }, function(error) {
+                        deferred.resolve({
+                            'Error': error,
+                            'Game': undefined
                         });
+                    });
 
-                        return deferred.promise;
-                    }
+                    return deferred.promise;
                 }
-            })
-            .state('gameDetails.matchedTiles', {
-                url: '/matched-tiles',
-                templateUrl: 'js/views/game-details-match-tiles.html',
-                controller: 'gameDetailsMatchTilesController',
-                resolve: {
-                    matchedTiles: function($stateParams, GameTiles, $q){
+            }
+        })
+        .state('gameDetails.playingField', {
+            url: '/playing-field',
+            templateUrl: 'js/views/game-details-field.html',
+            controller: 'gameDetailsPlayingFieldController',
+            resolve: {
+                tiles: function($stateParams, GameTiles, $q) {
 
-                        var deferred = $q.defer();
+                    var deferred = $q.defer();
 
-                        GameTiles.matched({
-                            id: $stateParams.gameId
-                        }, function(tiles) {
-                            console.log(tiles);
-                            deferred.resolve({'Error': undefined, 'Tiles': tiles});
-                        }, function(error) {
-                            deferred.resolve({'Error': error, 'Tiles': undefined});
+                    GameTiles.unMatched({
+                        id: $stateParams.gameId
+                    }, function(tiles) {
+                        deferred.resolve({
+                            'Error': undefined,
+                            'Tiles': tiles
                         });
+                    }, function(error) {
+                        deferred.resolve({
+                            'Error': error,
+                            'Tiles': undefined
+                        });
+                    });
 
-                        return deferred.promise;
-                    }
+                    return deferred.promise;
                 }
-            })
-            .state('login', {
-                url: '/login',
-                templateUrl: 'js/views/user-logedin.html',
-                controller: 'userLogin'
-            })
-            .state('logout', {
-                url: '/logout',
-                templateUrl: 'js/views/user-logedout.html',
-                controller: 'userLogout'
-            })
-            .state('authcallback', {
-                url: '/authcallback',
-                templateUrl: 'js/views/user-login-callback.html',
-                controller: 'userCallback'
-            });
+            }
+        })
+        .state('gameDetails.matchedTiles', {
+            url: '/matched-tiles',
+            templateUrl: 'js/views/game-details-match-tiles.html',
+            controller: 'gameDetailsMatchTilesController',
+            resolve: {
+                matchedTiles: function($stateParams, GameTiles, $q) {
 
-        //$locationProvider.html5Mode(true);
-        $httpProvider.interceptors.push('httpRequestInterceptor');
-    }
-);
+                    var deferred = $q.defer();
+
+                    GameTiles.matched({
+                        id: $stateParams.gameId
+                    }, function(tiles) {
+                        deferred.resolve({
+                            'Error': undefined,
+                            'Tiles': tiles
+                        });
+                    }, function(error) {
+                        deferred.resolve({
+                            'Error': error,
+                            'Tiles': undefined
+                        });
+                    });
+
+                    return deferred.promise;
+                }
+            }
+        })
+        .state('login', {
+            url: '/login',
+            templateUrl: 'js/views/user-logedin.html',
+            controller: 'userLogin'
+        })
+        .state('logout', {
+            url: '/logout',
+            templateUrl: 'js/views/user-logedout.html',
+            controller: 'userLogout'
+        })
+        .state('authcallback', {
+            url: '/authcallback',
+            templateUrl: 'js/views/user-login-callback.html',
+            controller: 'userCallback'
+        });
+
+    //$locationProvider.html5Mode(true);
+    $httpProvider.interceptors.push('httpRequestInterceptor');
+});

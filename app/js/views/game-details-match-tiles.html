@@ -5,7 +5,17 @@
 	</ul>
 	<h1>Gematchte tegels:</h1>
 	<div >
-		<h3 class="error" ng-if="matchedTiles.Error">{{ matchedTiles.Error.data.message }}</h3>
-		<div ng-if="matchedTiles.Tiles"></div>
+		<h3 class="error" ng-if="gameStartedError">{{ gameStartedError.Error.data.message }}</h3>
+		<div ng-if="!gameStartedError">
+			<div ng-repeat="gamer in matchedByPlayer">
+				<h3>{{gamer.name}} ({{gamer.numberOfMatches}} matches)</h3>
+				<div class="row">
+					<div class="col-lg-1 col-md-2 col-sm-2 matchShowcase" ng-repeat="match in gamer.matches">
+						<div class="matchedShowcaseItem" name="{{match.tile.name}}" suit="{{match.tile.suit}}"></div>
+						<div class="matchedShowcaseItem showcaseItem2" name="{{match.tile.name}}" suit="{{match.tile.suit}}"></div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>

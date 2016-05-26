@@ -5,5 +5,6 @@
 	<div id="fieldContent" ng-if="tiles.Tiles" class="{{ gameDetails.gameTemplate.id }}">
 		<div ng-repeat="tile in tiles.Tiles" ng-class="activeTile(tile._id) ? 'selectedTile' : ''" class="tile" ng-click="clickTile(tile)" xPos="{{tile.xPos}}" yPos="{{tile.yPos}}" zPos="{{tile.zPos}}" name="{{tile.tile.name}}" suit="{{tile.tile.suit}}"></div>
 		<h1>{{ gameDetails.gameTemplate.id }}</h1>
+		<h1 ng-if="gameDetails.state == 'finished'">Spel is geeindigd!</h1>
 	</div>
 </div>

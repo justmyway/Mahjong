@@ -1,35 +1,31 @@
 angular.module('Mahjong.controllers')
-    .controller('gameDetailsPlayingFieldController', 
-    	function($rootScope, $scope, $state, tiles, TileProccessing){
-    	
-    	TileProccessing.setGameTiles(tiles);
-    	$scope.tiles = tiles;
+    .controller('gameDetailsPlayingFieldController',
+        function($rootScope, $scope, $state, $window, tiles, TileProccessing) {
 
-    	$scope.clickTile = function(tile) {
+            TileProccessing.setGameTiles(tiles);
+            $scope.tiles = tiles;
 
-            if (TileProccessing.accessableTile(tile)) {
+            $scope.clickTile = function(tile) {
 
-                TileProccessing.checkMatchTile(tile, 
-                	function(tile1Id, tile2Id) {
+                if ($rootScope.gameDetails.state == 'finished') {
 
-                    GameTiles.match({
-                            id: $rootScope.gameDetails._id,
-                            tile1Id: tile1Id,
-                            tile2Id: tile2Id
-                        },
-                        function() {
+                    $window.alert("Er zijn geen zetten meer mogelijk!");
+
+                } else if (TileProccessing.accessableTile(tile)) {
+
+                    TileProccessing.checkMatchTile(tile,
+                        function(tile1, tile2) {
+
+                            // console.log('match!    ' + tile1.tile.name + ':' + tile2.tile.name + '   +    ' + tile1.tile.suit + ':' + tile2.tile.suit);
                             $state.reload();
+
                         }, function(error) {
                             console.log('Error ', error);
                         });
-
-                }, function(error) {
-                    console.log('Error ', error);
-                });
+                }
             }
-        }
 
-        $scope.activeTile = function(tileId) {
-            return TileProccessing.selectedTileId() == tileId;
-        }
-    });
+            $scope.activeTile = function(tileId) {
+                return TileProccessing.selectedTileId() == tileId;
+            }
+        });
