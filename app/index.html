@@ -1,0 +1,73 @@
+<html lang="en" ng-app="Mahjong">
+	<head>
+		<!-- STYLE -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+		<base href="/">
+
+		<title>Mahjong Majhem</title>
+
+		<!-- The css is copied into dist/css/app.css by the copy task -->
+		<link rel="stylesheet" href="css/app.css"/>
+		<link rel="stylesheet" href="css/game-list.css"/>
+		<link rel="stylesheet" href="css/game-details.css"/>
+		<link rel="stylesheet" href="css/board/board1.css"/>
+
+		<!-- Services -->
+		<script src="js/app.js"></script>
+
+	</head>
+	<body ng-app="Mahjong">
+		
+		<nav class="navbar navbar-fixed-top navbar-default">
+      		<div class="container">
+        		<div class="navbar-header">
+          			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+			            <span class="sr-only">Toggle navigation</span>
+			            <span class="icon-bar"></span>
+			            <span class="icon-bar"></span>
+			            <span class="icon-bar"></span>
+          			</button>
+          			<a class="navbar-brand" ui-sref="games">Mahjong</a>
+        		</div>
+        		<div id="navbar" class="collapse navbar-collapse">
+		          	<ul class="nav navbar-nav">
+			            <li><a ui-sref="games">Spelen</a></li>
+			            <li ng-if="!isLogedIn()"><a href="http://mahjongmayhem.herokuapp.com/auth/avans?callbackUrl=http://127.0.0.1:3000/%23/authcallback">Inloggen</a></li>
+			            <li ng-if="isLogedIn()"><a ui-sref="logout">Uitloggen</a></li>
+		          	</ul>
+	        	</div><!-- /.nav-collapse -->
+	      	</div><!-- /.container -->
+	    </nav><!-- /.navbar -->
+
+		<div class="container-fluid" style="margin-top:50px;">
+
+	    	<div id="loadingDiv" ng-show="loading">
+	    		<div id="loadingContainer">
+	    			<div id="loadingImage">
+						<img src="img/loadingFlat.gif" />
+					</div>
+					<h2 id="loadingText">{{loadingText}}</h2>
+				</div>
+			</div>  
+
+	    	<div ui-view></div>
+
+	    	<hr>
+
+		    <!-- Site footer -->
+		    <footer class="footer">
+		      	<div class="container">
+		        	<p class="text-muted">Mahjong games by &copy; Mickey</p>
+		      	</div>
+		    </footer>
+
+	    </div> <!-- /container -->
+
+		<!-- Bootstrap core JavaScript
+	    ================================================== -->
+	    <!-- Placed at the end of the document so the pages load faster -->
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	</body>
+</html>

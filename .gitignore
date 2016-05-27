@@ -1,0 +1,7 @@
+## Ignore Files not needed
+
+# modules
+node_modules
+
+#cache
+.sass-cache

@@ -1,0 +1,27 @@
+.details-menu {
+  text-align: center;
+}
+
+.details-menu .btn {
+  margin: 15px 5px 0px 5px;
+}
+
+.matchShowcase {
+  margin: 7px;
+  height: 90px;
+}
+
+.matchedShowcaseItem {
+  width: 73px;
+  height: 90px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  border-radius: 8px;
+}
+
+.showcaseItem2 {
+  top: -90px;
+  left: 20px;
+  position: relative;
+}
