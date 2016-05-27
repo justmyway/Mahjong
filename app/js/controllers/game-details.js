@@ -61,10 +61,8 @@ angular.module('Mahjong.controllers')
                 GamePlayers.save({
                     id: $rootScope.gameDetails._id
                 }, function(response) {
-                    $timeout(function() {
-                        $rootScope.loading = false;
-                        $state.reload();
-                    }, 1000);
+                    $rootScope.loading = false;
+                    $state.reload();
                 }, function(error) {
                     console.log('Error', error);
                     $rootScope.loadingText = 'Error: ' + error.statusText;
@@ -81,10 +79,8 @@ angular.module('Mahjong.controllers')
                 Games.start({
                     id: $rootScope.gameDetails._id
                 }, function(response) {
-                    $timeout(function() {
-                        $rootScope.loading = false;
-                        $state.reload();
-                    }, 1000);
+                    $rootScope.loading = false;
+                    $state.reload();
                 }, function(error) {
                     console.log('Error', error);
                     $rootScope.loadingText = 'Error: ' + error.statusText;

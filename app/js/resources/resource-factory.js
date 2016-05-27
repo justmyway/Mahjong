@@ -22,7 +22,9 @@ angular.module('Mahjong.resources', ['ngResource'])
 })
 
 .factory('GamePlayers', function($resource, Settings) {
-    return $resource(Settings.apiUrl + 'Games/:id/Players', {id:'@id'});
+    return $resource(Settings.apiUrl + 'Games/:id/Players', {
+        id: '@id'
+    });
 })
 
 .factory('GameTiles', function($resource, Settings) {

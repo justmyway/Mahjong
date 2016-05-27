@@ -1,6 +1,6 @@
 angular.module('Mahjong.logic', [])
     .factory('TileProccessing',
-        function($rootScope, GameTiles) {
+        function() {
 
             var self = {
                 gameTiles: {},
@@ -49,10 +49,13 @@ angular.module('Mahjong.logic', [])
 
             return {
                 setGameTiles: function(gameTiles) {
-                    self.gameTiles = gameTiles.Tiles;
+                    self.gameTiles = gameTiles;
                 },
                 selectedTileId: function() {
                     return self.activeTile._id;
+                },
+                clearSelected: function() {
+                    self.activeTile = {};
                 },
                 accessableTile: function(tile) {
                     var posible = true;
@@ -78,27 +81,14 @@ angular.module('Mahjong.logic', [])
 
                     return posible;
                 },
-                checkMatchTile: function(tile, callback, errorCallback) {
+                checkMatchTile: function(tile, callback) {
                     if (angular.equals({}, self.activeTile)) {
                         self.activeTile = tile;
                     } else if (self.activeTile._id == tile._id) {
                         self.activeTile = {};
                     } else if (matchable(tile, self.activeTile)) {
-                        GameTiles.match({
-                                id: $rootScope.gameDetails._id,
-                                tile1Id: tile._id,
-                                tile2Id: self.activeTile._id
-                            },
-                            function() {
-                                var previousActiveTile = self.activeTile;
-                                self.activeTile = {};
-                                callback(tile, previousActiveTile)
-                            },
-                            function(error) {
-                                errorCallback(error);
-                            });
+                        callback(tile, self.activeTile);
                     }
-
                 }
             };
 
