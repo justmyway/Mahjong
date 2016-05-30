@@ -3,5 +3,8 @@
 # modules
 node_modules
 
-#cache
+# cache
 .sass-cache
+
+# dist
+dist

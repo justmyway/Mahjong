@@ -2,6 +2,7 @@ angular.module('Mahjong.controllers')
     .controller('gameDetailsPlayingFieldController',
         function($rootScope, $scope, $state, $window, tiles, Games, GameTiles, TileProccessing) {
 
+            $rootScope.loadingText = "Game wordt opgehaalt";
             TileProccessing.setGameTiles(tiles.Tiles);
             $scope.tiles = tiles;
 
@@ -18,8 +19,8 @@ angular.module('Mahjong.controllers')
 
                             TileProccessing.clearSelected();
 
-                            $scope.tiles.Tiles.splice($scope.tiles.Tiles.indexOf(tile1), 1);
-                            $scope.tiles.Tiles.splice($scope.tiles.Tiles.indexOf(tile2), 1);
+                            $scope.tiles.Tiles[$scope.tiles.Tiles.indexOf(tile1)]['match'] = 'true';
+                            $scope.tiles.Tiles[$scope.tiles.Tiles.indexOf(tile2)]['match'] = 'true';
 
                             TileProccessing.setGameTiles($scope.tiles.Tiles);
 
@@ -29,13 +30,16 @@ angular.module('Mahjong.controllers')
                                     tile2Id: tile2._id
                                 },
                                 function() {
-                                    GameTiles.unMatched({
+                                    GameTiles.matched({
                                         id: $rootScope.gameDetails._id
                                     }, function(tiles) {
-                                        if (tiles.length <= $scope.tiles.Tiles.length) {
-                                            $scope.tiles.Tiles = tiles;
-                                            TileProccessing.setGameTiles(tiles);
-                                        }
+                                        angular.forEach(tiles, function(matchedTile) {
+                                            angular.forEach($scope.tiles.Tiles, function(gameTile) {
+                                                if(matchedTile._id == gameTile._id && $scope.tiles.Tiles[$scope.tiles.Tiles.indexOf(gameTile)]['match'] == undefined)
+                                                    $scope.tiles.Tiles[$scope.tiles.Tiles.indexOf(gameTile)]['match'] = 'true';
+                                            });
+                                        });
+                                        TileProccessing.setGameTiles($scope.tiles.Tiles);
                                         Games.get({
                                             id: $rootScope.gameDetails._id
                                         }, function(game) {
@@ -46,11 +50,16 @@ angular.module('Mahjong.controllers')
                                     });
                                 },
                                 function(error) {
-                                    GameTiles.unMatched({
+                                    GameTiles.matched({
                                         id: $rootScope.gameDetails._id
                                     }, function(tiles) {
-                                        $scope.tiles.Tiles = tiles;
-                                        TileProccessing.setGameTiles(tiles);
+                                        angular.forEach(tiles, function(matchedTile) {
+                                            angular.forEach($scope.tiles.Tiles, function(gameTile) {
+                                                if(matchedTile._id == gameTile._id && $scope.tiles.Tiles[$scope.tiles.Tiles.indexOf(gameTile)]['match'] == undefined)
+                                                    $scope.tiles.Tiles[$scope.tiles.Tiles.indexOf(gameTile)]['match'] = 'true';
+                                            });
+                                        });
+                                        TileProccessing.setGameTiles($scope.tiles.Tiles);
                                         Games.get({
                                             id: $rootScope.gameDetails._id
                                         }, function(game) {
