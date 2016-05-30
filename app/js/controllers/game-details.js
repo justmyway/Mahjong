@@ -40,6 +40,17 @@ angular.module('Mahjong.controllers')
                 return false;
             }
 
+            $rootScope.canDeleteGame = function() {
+                var game = $rootScope.gameDetails;
+
+                if (game.state != "playing") {
+                    if (game.createdBy._id == $cookies.get('user')) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+
             $scope.canBeginGame = function() {
                 var game = $rootScope.gameDetails;
                 if (game.createdBy._id == $cookies.get('user')) {
@@ -63,6 +74,27 @@ angular.module('Mahjong.controllers')
                 }, function(response) {
                     $rootScope.loading = false;
                     $state.reload();
+                }, function(error) {
+                    console.log('Error', error);
+                    $rootScope.loadingText = 'Error: ' + error.statusText;
+                    $timeout(function() {
+                        $rootScope.loading = false;
+                    }, 5500);
+                });
+            }
+
+            $scope.deleteGame = function() {
+                $rootScope.loading = true;
+                $rootScope.loadingText = 'Verzoek om te verwijderen wordt verwerkt';
+
+                Games.delete({
+                    id: $rootScope.gameDetails._id
+                }, function(response) {
+                    $rootScope.loadingText = 'Game is verwijderd!!';
+                    $timeout(function() {
+                        $rootScope.loading = false;
+                        $state.go('games');
+                    }, 2500);
                 }, function(error) {
                     console.log('Error', error);
                     $rootScope.loadingText = 'Error: ' + error.statusText;

@@ -10,7 +10,6 @@ angular.module('Mahjong.controllers')
             Games.query({
                 pageSize: 500
             }, function(response) {
-                console.log(response);
                 $rootScope.loading = false;
                 $rootScope.loadingText = "";
                 $scope.games = response;
