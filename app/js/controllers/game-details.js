@@ -7,7 +7,7 @@ angular.module('Mahjong.controllers')
 
             if (singleGame.Game == undefined) {
                 $rootScope.loading = true;
-                $rootScope.loadingText = 'Helaas kon het spel niet worden opgehaald, <br>' + singleGame.Error;
+                $rootScope.loadingText = 'Helaas kon het spel niet worden opgehaald';
             } else {
                 $rootScope.gameDetails = singleGame.Game;
             }
