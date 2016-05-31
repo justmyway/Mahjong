@@ -1,6 +1,6 @@
 angular.module('Mahjong.controllers')
     .controller('gameDetailsPlayingFieldController',
-        function($rootScope, $scope, $state, $window, tiles, Games, GameTiles, TileProccessing) {
+        function($rootScope, $scope, $state, $cookies, $window, tiles, Games, GameTiles, TileProccessing) {
 
             $rootScope.loadingText = "Game wordt opgehaalt";
             TileProccessing.setGameTiles(tiles.Tiles);
@@ -11,6 +11,10 @@ angular.module('Mahjong.controllers')
                 if ($rootScope.gameDetails.state == 'finished') {
 
                     $window.alert("Er zijn geen matches meer mogelijk!");
+
+                } else if($cookies.get('user') == undefined){
+
+                    $window.alert("Je bent niet ingelocht!");
 
                 } else if (TileProccessing.accessableTile(tile)) {
 

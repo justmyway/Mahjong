@@ -35,6 +35,18 @@ module.exports = function(config) {
             dir: 'coverage/'
         },
 
+        reportSlowerThan: 500,
+
+        plugins: [
+            'karma-coverage',
+            'karma-browserify',
+            'karma-mocha',
+            'karma-chai',
+            'karma-sinon',
+            'karma-chrome-launcher',
+            'karma-jasmine',
+        ],
+
         port: 9876,
         colors: true,
         autoWatch: true,
