@@ -3,7 +3,7 @@
 		<h2 class="error">{{ tiles.Error.data.message }}</h2>
 	</div>
 	<div id="fieldContent" ng-if="tiles.Tiles" class="{{ gameDetails.gameTemplate.id }}" >
-		<div ng-repeat="tile in tiles.Tiles | array | unmatchedtile" ng-class="activeTile(tile._id) ? 'selectedTile' : ''" class="tile" ng-click="clickTile(tile)" xPos="{{tile.xPos}}" yPos="{{tile.yPos}}" zPos="{{tile.zPos}}" name="{{tile.tile.name}}" suit="{{tile.tile.suit}}"></div>
+		<div ng-repeat="tile in tiles.Tiles | unmatchedtile" ng-class="activeTile(tile._id) ? 'selectedTile' : ''" class="tile" ng-click="clickTile(tile)" xPos="{{tile.xPos}}" yPos="{{tile.yPos}}" zPos="{{tile.zPos}}" name="{{tile.tile.name}}" suit="{{tile.tile.suit}}"></div>
 		<h1 ng-click="clearSelected()">{{ gameDetails.gameTemplate.id }}</h1>
 		<h1 ng-if="gameDetails.state == 'finished'">Spel is geeindigd!</h1>
 	</div>
