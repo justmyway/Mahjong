@@ -1,96 +1,202 @@
 describe("Factory", function() {
-	var $httpBackend,
-		$controller;
+    var $httpBackend,
+        $controller;
 
-	// initialize the app
-	beforeEach(module('Mahjong'));
+    // initialize the app
+    beforeEach(module('Mahjong'));
 
-	beforeEach(inject(function(_$httpBackend_, _$controller_){
-		$controller = _$controller_;
-		$httpBackend = _$httpBackend_;
-	}));
+    beforeEach(inject(function(_$httpBackend_, _$controller_) {
+        $controller = _$controller_;
+        $httpBackend = _$httpBackend_;
 
-	// it('Should replace a method on the service and expect not calling', function() { 
-	// 	// Creëer een personController, geef de dependencies aan de constructor by name mee
-	// 	var personController = $controller('PersonController', { $scope: {}, PersonService: PersonService });
-		
-	// 	// Vervang de methode door een stub (in plaats van een nieuwe functie)
-	// 	// Hierdoor kunnen we expects gaan doen
-	// 	PersonService.addPerson = sinon.stub();
+        $httpBackend.whenGET("js/views/game-list.html").respond(200, '');
+        $httpBackend
+            .when('GET', 'http://mahjongmayhem.herokuapp.com/Games?pageSize=500')
+            .respond(201, [{
+                "_id": "57552e1875c3971100c2ba1f",
+                "createdBy": {
+                    "_id": "q.vanhaastrecht@student.avans.nl",
+                    "name": "Quinn van Haastrecht",
+                    "__v": 0
+                },
+                "createdOn": "2016-06-06T08:02:32.758Z",
+                "gameTemplate": {
+                    "_id": "Ox",
+                    "__v": 0,
+                    "id": "Ox"
+                },
+                "__v": 0,
+                "startedOn": "2016-06-06T08:02:50.029Z",
+                "players": [{
+                    "_id": "q.vanhaastrecht@student.avans.nl",
+                    "name": "Quinn van Haastrecht",
+                    "__v": 0
+                }],
+                "maxPlayers": 2,
+                "minPlayers": 1,
+                "state": "playing",
+                "id": "57552e1875c3971100c2ba1f"
+            }, {
+                "_id": "575529bd75c3971100c2b98e",
+                "createdBy": {
+                    "_id": "nc.snakenborg@student.avans.nl",
+                    "name": "Niels Snakenborg",
+                    "__v": 0
+                },
+                "createdOn": "2016-06-06T07:43:57.214Z",
+                "gameTemplate": {
+                    "_id": "Shanghai",
+                    "__v": 0,
+                    "id": "Shanghai"
+                },
+                "__v": 1,
+                "players": [{
+                    "_id": "nc.snakenborg@student.avans.nl",
+                    "name": "Niels Snakenborg",
+                    "__v": 0
+                }, {
+                    "_id": "aw.vanzijderveld@student.avans.nl",
+                    "name": "Iwan van Zijderveld",
+                    "__v": 0
+                }],
+                "maxPlayers": 2,
+                "minPlayers": 1,
+                "state": "open",
+                "id": "575529bd75c3971100c2b98e"
+            }, {
+                "_id": "5754a75ce9e6d4110083bebd",
+                "createdBy": {
+                    "_id": "bp.vanderzee@student.avans.nl",
+                    "name": "Bram van der Zee",
+                    "__v": 0
+                },
+                "createdOn": "2016-06-05T22:27:40.219Z",
+                "gameTemplate": {
+                    "_id": "Ox",
+                    "__v": 0,
+                    "id": "Ox"
+                },
+                "__v": 1,
+                "startedOn": "2016-06-05T22:27:52.866Z",
+                "players": [{
+                    "_id": "bp.vanderzee@student.avans.nl",
+                    "name": "Bram van der Zee",
+                    "__v": 0
+                }, {
+                    "_id": "jlm.vantartwijk@student.avans.nl",
+                    "name": "Jelte van Tartwijk",
+                    "__v": 0
+                }],
+                "maxPlayers": 4,
+                "minPlayers": 2,
+                "state": "playing",
+                "id": "5754a75ce9e6d4110083bebd"
+            }]);
+    }));
 
-	// 	personController.addPersonToService(undefined, undefined);
+    afterEach(function() {
+        $httpBackend.verifyNoOutstandingExpectation();
+        $httpBackend.verifyNoOutstandingRequest();
+        $httpBackend.resetExpectations();
+    });
 
-	// 	// Omdat het een stub is, heeft het veel methodes om te zien of het aangeroepen is.
-	// 	// Zie http://sinonjs.org/docs/
-	// 	assert(PersonService.addPerson.notCalled);
-	// });
+    it('correct game request', function() {
+        // Given
+        var $rootScope = {};
+        var $scope = {};
+        var expectedError = '';
 
-	// it('Should replace a method on the service and expect calling', function() { 
-	// 	// Creëer een personController, geef de dependencies aan de constructor by name mee
-	// 	var personController = $controller('PersonController', { $scope: {}, PersonService: PersonService });
-		
-	// 	// Vervang de methode door een stub (in plaats van een nieuwe functie)
-	// 	// Hierdoor kunnen we expects gaan doen
-	// 	PersonService.addPerson = sinon.stub();
+        var gameListController = $controller('gameListController', {
+            $rootScope: $rootScope,
+            $scope: $scope
+        });
 
-	// 	personController.addPersonToService('Martijn', 'Schuurmans');
+        var newGame = {
+            minPlayers: 1,
+            maxPlayers: 2,
+            templateName: "Ox"
+        };
 
-	// 	// Omdat het een stub is, heeft het veel methodes om te zien of het aangeroepen is.
-	// 	// Zie http://sinonjs.org/docs/
-	// 	assert(PersonService.addPerson.calledWith('Martijn', 'Schuurmans'));
-	// });
+        $httpBackend
+            .expectPOST('http://mahjongmayhem.herokuapp.com/Games')
+            .respond(404, {
+                err: expectedError
+            });
 
-	// HttpBackend is van AngularMocks (en dus niet van SINON)
-	// Hiermee kan je calls afvangen die web requests zijn
-	it('should mock the httpbackend', function(){
-		// Given
-		var $rootScope = {};
-		var $scope = {};
+        $scope.addNewGame(newGame);
+        $httpBackend.flush();
 
-		var gameListController = $controller('gameListController', {$rootScope: $rootScope, $scope: $scope});
+        expect($rootScope.message.text[0]).to.equal('Helaas het russisch sensuur heeft deze call tegen gehouden.');
+    });
 
-		console.log(gameListController);
+    it('geen spel meegegeven', function() {
+        // Given
+        var $rootScope = {};
+        var $scope = {};
+        var expectedError = '';
 
-		var newGame = {
-			minPlayers: 1,
-			maxPlayers:	2,
-			templateName: "Ox"
-		};
+        var gameListController = $controller('gameListController', {
+            $rootScope: $rootScope,
+            $scope: $scope
+        });
 
-		$httpBackend
-			.expectPOST('http://mahjongmayhem.herokuapp.com/Games')
-			//.respond(404, { err: expectedError });
+        var newGame = {};
 
-		gameListController.addNewGame(newGame);
-		$httpBackend.flush();
+        $scope.addNewGame(newGame);
+        $httpBackend.flush();
 
-		expect($rootScope.message.text).to.equal('Helaas het russisch sensuur heeft deze call tegen gehouden.');
+        expect($rootScope.message.text[0]).to.equal('Graag alle velden invullen!');
+    });
 
-                            
+    it('minimale spelers groter dan maximale', function() {
+        // Given
+        var $rootScope = {};
+        var $scope = {};
+        var expectedError = '';
 
+        var gameListController = $controller('gameListController', {
+            $rootScope: $rootScope,
+            $scope: $scope
+        });
 
+        var newGame = {
+            minPlayers: 4,
+            maxPlayers: 2,
+            templateName: "Ox"
+        };
 
+        $scope.addNewGame(newGame);
+        $httpBackend.flush();
 
-		// // Given
-		// var $scope = {};
-		// // Creëer een personController, geef de dependencies aan de constructor by name mee
-		// var personController = $controller('PersonController', { $scope: $scope, $httpBackend: $httpBackend });
+        expect($rootScope.message.text[0]).to.equal('Minimaal en maximaal door elkaar gehaald? ;)');
+    });
 
-		// var person = { id: 1, courses: [] };
-		// var expectedCode = 'WEBS6';
-		// var expectedError = 'Person not found';
-		// // Nu expecten we het omdat we in de test zitten.
-		// // Bij de before of beforeEach kunnen we ook whenPost stubben
-		// $httpBackend
-		// 	.expectPOST('http://api.myApp.com/persons/' + person.id + '/courses', { code: expectedCode })
-		// 	.respond(404, { err: expectedError });
+    it('te veel spelers', function() {
+        // Given
+        var $rootScope = {};
+        var $scope = {};
+        var expectedError = '';
 
-		// // When
-		// personController.addCourse(person, expectedCode);
-		// $httpBackend.flush(); // Voer synchroon uit ipv asynchroon
+        var gameListController = $controller('gameListController', {
+            $rootScope: $rootScope,
+            $scope: $scope
+        });
 
-		// // Then
-		// expect($scope.error).to.equal(expectedError);
-		// expect(person.courses).to.have.length(0);
-	});
+        var newGame = {
+            minPlayers: 1,
+            maxPlayers: 33,
+            templateName: "Ox"
+        };
+
+        // $httpBackend
+        //     .expectPOST('http://mahjongmayhem.herokuapp.com/Games')
+        //     .respond(404, {
+        //         err: expectedError
+        //     });
+
+        $scope.addNewGame(newGame);
+        $httpBackend.flush();
+
+        expect($rootScope.message.text[0]).to.equal('Het maximaal aantal spelers moet tussen de 3 en 32 personen liggen.');
+    });
 });

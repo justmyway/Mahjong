@@ -24,7 +24,7 @@ module.exports = function(config) {
 
         browserify: {
             debug: true,
-            transform: [ /*es6ify, brfs, 'browserify-shim',*/ istanbul({
+            transform: [ /*es6ify, brfs, browserify-shim',*/ istanbul({
                 ignore: ['**/node_modules/**', '**/test/**'],
             })],
         },
@@ -45,6 +45,7 @@ module.exports = function(config) {
             'karma-sinon',
             'karma-chrome-launcher',
             'karma-jasmine',
+            'browserify'
         ],
 
         port: 9876,
