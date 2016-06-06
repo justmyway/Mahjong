@@ -9,3 +9,6 @@ coverage
 
 # dist
 dist
+/dist
+/dist/js/app.js
+dist/js/app.js
