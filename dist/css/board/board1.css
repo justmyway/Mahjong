@@ -4,8 +4,8 @@
 /* END board config */
 #fieldContent {
   position: relative;
-  width: 1220px;
-  height: 830px;
+  /*width: 1220px;
+  height: 830px;*/
   margin-left: auto;
   margin-right: auto;
   text-align: center;
