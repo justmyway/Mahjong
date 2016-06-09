@@ -65,16 +65,18 @@ angular.module('Mahjong.logic', [])
                     }
 
                     angular.forEach(self.gameTiles, function(gameTile) {
-                        if (gameTile._id != tile._id && tile.zPos <= gameTile.zPos && posible) {
+                        if(gameTile.match == undefined){
+                            if (gameTile._id != tile._id && tile.zPos <= gameTile.zPos && posible) {
 
-                            if (isOntop(tile, gameTile)) {
-                                posible = false;
-                            }
+                                if (isOntop(tile, gameTile)) {
+                                    posible = false;
+                                }
 
-                            emptySide = blockedSides(tile, gameTile, emptySide);
+                                emptySide = blockedSides(tile, gameTile, emptySide);
 
-                            if (!emptySide.right && !emptySide.left) {
-                                posible = false;
+                                if (!emptySide.right && !emptySide.left) {
+                                    posible = false;
+                                }
                             }
                         }
                     });

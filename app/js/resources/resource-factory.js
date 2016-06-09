@@ -29,6 +29,13 @@ angular.module('Mahjong.resources', ['ngResource'])
 
 .factory('GameTiles', function($resource, Settings) {
     return $resource(Settings.apiUrl + 'Games/:id/Tiles', {}, {
+        'all': {
+            method: 'GET',
+            isArray: true,
+            params: {
+                'id': '@id'
+            }
+        },
         'matched': {
             method: 'GET',
             isArray: true,

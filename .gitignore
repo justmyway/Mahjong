@@ -2,6 +2,13 @@
 
 # modules
 node_modules
+coverage
 
-#cache
+# cache
 .sass-cache
+
+# dist
+dist
+/dist
+/dist/js/app.js
+dist/js/app.js

@@ -11,9 +11,12 @@ require('./services/settings.js');
 require('./resources/httpRequest.js');
 require('./resources/resource-factory.js');
 require('./resources/tileLogic.js');
+require('./filters/tileFilter.js');
+require('./directives/tileDirective.js');
+
 
 // Create your app
-var app = angular.module('Mahjong', ['ngResource', 'ui.router', 'ngCookies', 'Mahjong.controllers', 'Mahjong.httpRequest', 'Mahjong.resources', 'Mahjong.services', 'Mahjong.logic']);
+var app = angular.module('Mahjong', ['ngResource', 'ui.router', 'ngCookies', 'Mahjong.controllers', 'Mahjong.httpRequest', 'Mahjong.resources', 'Mahjong.services', 'Mahjong.logic', 'Mahjong.filters', 'Mahjong.directives']);
 
 app.run(['$cookies', '$rootScope',
     function($cookies, $rootScope) {
@@ -70,7 +73,7 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider, $location
 
                     var deferred = $q.defer();
 
-                    GameTiles.unMatched({
+                    GameTiles.all({
                         id: $stateParams.gameId
                     }, function(tiles) {
                         deferred.resolve({

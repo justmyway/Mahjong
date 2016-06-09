@@ -8,9 +8,8 @@ angular.module('Mahjong.controllers')
             $scope.gameTemplates = Settings.gameTemplates
 
             Games.query({
-                pageSize: 1000
+                pageSize: 500
             }, function(response) {
-                console.log(response);
                 $rootScope.loading = false;
                 $rootScope.loadingText = "";
                 $scope.games = response;

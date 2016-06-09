@@ -4,8 +4,6 @@
 /* END board config */
 #fieldContent {
   position: relative;
-  width: 1220px;
-  height: 830px;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
@@ -30,7 +28,7 @@
   border-radius: 8px;
 }
 
-.selectedTile {
+.selectedTile div {
   -webkit-box-shadow: 0px 0px 15px 20px rgba(52, 205, 247, 0.85);
   -moz-box-shadow: 0px 0px 15px 20px rgba(52, 205, 247, 0.85);
   box-shadow: 0px 0px 15px 20px rgba(52, 205, 247, 0.85);
@@ -989,7 +987,7 @@ div[name="White"][suit="Dragon"] {
 }
 
 .Monkey {
-  width: 1180px !important;
+  width: 1220px !important;
   height: 830px !important;
 }
 

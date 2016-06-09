@@ -3,15 +3,15 @@
 
 /* board config */
 
-$tile-width: 73px;
-$tile-height: 90px;
-$sheet-width: 73;
-$sheet-height: 90;
-$tile-space: 3px;
-$tile-space-3d: 6px;
-$border-color: #996600;
+$tile-width: 37px;
+$tile-height: 45px;
+$sheet-width: 37;
+$sheet-height: 45;
+$tile-space: 2px;
+$tile-space-3d: 3px;
+$border-color: #252233;
 
-$tileSprite: '../../img/Mahjong_sprite_sheet.png';
+$tileSprite: '../../img/Mahjong_sprite_sheet_small.png';
 
 $tileSuits: (
 	"Character"	0,
@@ -57,13 +57,13 @@ $tileDragon: (
 );
 
 $templateSize: (
-	("Dragon"	1220	830),
-	("Monkey"	1220	830),
-	("Ox"		1140	830),
-	("Ram"		1220	830),
-	("Rooster"	1220	830),
-	("Shanghai"	1220	830),
-	("Snake"	1220	830)
+	("Dragon"	630	425),
+	("Monkey"	630	425),
+	("Ox"		570	425),
+	("Ram"		630	425),
+	("Rooster"	630	425),
+	("Shanghai"	630	425),
+	("Snake"	630	425)
 );
 
 

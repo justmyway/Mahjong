@@ -41,7 +41,8 @@ module.exports = function(grunt) {
                     'dist/css/app.css': 'app/css/app.scss',
                     'dist/css/game-list.css': 'app/css/game-list.scss',
                     'dist/css/game-details.css': 'app/css/game-details.scss',
-                    'dist/css/board/board1.css': 'app/css/board/style1.scss'
+                    'dist/css/board/board1.css': 'app/css/board/style1.scss',
+                    'dist/css/board/board2.css': 'app/css/board/style2.scss'
                 }
             }
         },
