@@ -12,9 +12,11 @@ require('./resources/httpRequest.js');
 require('./resources/resource-factory.js');
 require('./resources/tileLogic.js');
 require('./filters/tileFilter.js');
+require('./directives/tileDirective.js');
+
 
 // Create your app
-var app = angular.module('Mahjong', ['ngResource', 'ui.router', 'ngCookies', 'Mahjong.controllers', 'Mahjong.httpRequest', 'Mahjong.resources', 'Mahjong.services', 'Mahjong.logic', 'Mahjong.filters']);
+var app = angular.module('Mahjong', ['ngResource', 'ui.router', 'ngCookies', 'Mahjong.controllers', 'Mahjong.httpRequest', 'Mahjong.resources', 'Mahjong.services', 'Mahjong.logic', 'Mahjong.filters', 'Mahjong.directives']);
 
 app.run(['$cookies', '$rootScope',
     function($cookies, $rootScope) {

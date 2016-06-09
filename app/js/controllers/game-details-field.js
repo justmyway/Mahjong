@@ -12,7 +12,7 @@ angular.module('Mahjong.controllers')
 
                     $window.alert("Er zijn geen matches meer mogelijk!");
 
-                } else if($cookies.get('user') == undefined){
+                } else if ($cookies.get('user') == undefined) {
 
                     $window.alert("Je bent niet ingelocht!");
 
@@ -39,7 +39,7 @@ angular.module('Mahjong.controllers')
                                     }, function(tiles) {
                                         angular.forEach(tiles, function(matchedTile) {
                                             angular.forEach($scope.tiles.Tiles, function(gameTile) {
-                                                if(matchedTile._id == gameTile._id && $scope.tiles.Tiles[$scope.tiles.Tiles.indexOf(gameTile)]['match'] == undefined)
+                                                if (matchedTile._id == gameTile._id && $scope.tiles.Tiles[$scope.tiles.Tiles.indexOf(gameTile)]['match'] == undefined)
                                                     $scope.tiles.Tiles[$scope.tiles.Tiles.indexOf(gameTile)]['match'] = 'true';
                                             });
                                         });
@@ -59,7 +59,7 @@ angular.module('Mahjong.controllers')
                                     }, function(tiles) {
                                         angular.forEach(tiles, function(matchedTile) {
                                             angular.forEach($scope.tiles.Tiles, function(gameTile) {
-                                                if(matchedTile._id == gameTile._id && $scope.tiles.Tiles[$scope.tiles.Tiles.indexOf(gameTile)]['match'] == undefined)
+                                                if (matchedTile._id == gameTile._id && $scope.tiles.Tiles[$scope.tiles.Tiles.indexOf(gameTile)]['match'] == undefined)
                                                     $scope.tiles.Tiles[$scope.tiles.Tiles.indexOf(gameTile)]['match'] = 'true';
                                             });
                                         });
